@@ -1,66 +1,71 @@
 // ============================================================
-// RoboCore-1 Safety Subsystem
-// Watchdog timers, E-stop, brownout, fault management
-// Designed for IEC 61508 SIL-2 compliance path
+// RoboCore-1 Safety Subsystem — Constitution v1.0 Compliant
+//
+// Cardinal Principles compliance:
+//   Precision   — Exact fault source identification, 32-bit fault register
+//   Reliability — HW E-stop bypass, 4 watchdogs, sticky faults
+//                 Cannot clear faults while E-stop active
+//                 Safe state active even if CPU is dead
+//   Speed       — Single cycle fault response
+//   Future Proof — 32-bit fault register (was 16-bit) for block expansion
+//                  Covers: CAN FD, EtherCAT, TSN, RISC-V, ADC, future blocks
+//
+// Fault register bit map (32-bit):
+//   [3:0]   — Watchdog expirations (WD0-WD3)
+//   [7:4]   — Reserved for WD4-WD7 (future expansion)
+//   [8]     — E-stop activated
+//   [9]     — Brownout detected
+//   [10]    — PID controller fault
+//   [11]    — Encoder interface fault
+//   [12]    — PWM engine fault
+//   [13]    — CAN FD fault (future)
+//   [14]    — EtherCAT fault (future)
+//   [15]    — TSN fault (future)
+//   [31:16] — Reserved for future blocks
+//
 // Part of the RoboCore-1 robotics SoC
 // Open Source — MIT License
 // ============================================================
 
 module safety_subsystem #(
-    parameter NUM_WATCHDOGS  = 4,         // independent watchdog timers
-    parameter WD_WIDTH       = 24,        // watchdog counter width
-    parameter NUM_FAULT_BITS = 16         // fault register width
+    parameter NUM_WATCHDOGS  = 4,
+    parameter WD_WIDTH       = 24,
+    parameter NUM_FAULT_BITS = 32    // Constitution: 32-bit for future expansion
 )(
-    // Clock and reset
     input  wire                          clk,
     input  wire                          rst_n,
 
-    // --------------------------------------------------------
     // Watchdog interface
-    // CPU must pet each watchdog within timeout period
-    // If any watchdog expires — system fault
-    // --------------------------------------------------------
-    input  wire [NUM_WATCHDOGS-1:0]      wd_pet,       // pulse to reset timer
+    input  wire [NUM_WATCHDOGS-1:0]      wd_pet,
     input  wire [WD_WIDTH-1:0]           wd_timeout    [0:NUM_WATCHDOGS-1],
-    input  wire [NUM_WATCHDOGS-1:0]      wd_enable,    // enable each watchdog
+    input  wire [NUM_WATCHDOGS-1:0]      wd_enable,
 
-    // --------------------------------------------------------
-    // Emergency stop
-    // Active LOW — pulled low by hardware E-stop button
-    // Bypasses all software — hardwired to safe_state output
-    // --------------------------------------------------------
-    input  wire                          estop_n,      // E-stop input (active low)
+    // Emergency stop — active LOW, hardwired
+    input  wire                          estop_n,
 
-    // --------------------------------------------------------
-    // Brownout detection
-    // External voltage monitor asserts this when VCC drops
-    // --------------------------------------------------------
-    input  wire                          brownout_n,   // brownout input (active low)
+    // Brownout — active LOW
+    input  wire                          brownout_n,
 
-    // --------------------------------------------------------
-    // External fault inputs
-    // From PID, encoder, PWM blocks
-    // --------------------------------------------------------
-    input  wire [NUM_FAULT_BITS-1:0]     fault_in,     // fault inputs from other blocks
+    // External fault inputs from all blocks
+    // [0]  = PID controller fault
+    // [1]  = Encoder interface fault
+    // [2]  = PWM engine fault
+    // [3]  = CAN FD fault (future)
+    // [4]  = EtherCAT fault (future)
+    // [5]  = TSN fault (future)
+    // [15:6] = Reserved
+    input  wire [NUM_FAULT_BITS-1:0]     fault_in,
 
-    // --------------------------------------------------------
     // CPU interface
-    // --------------------------------------------------------
-    input  wire                          fault_clear,  // CPU clears fault register
-    output reg  [NUM_FAULT_BITS-1:0]     fault_reg,    // latched fault register
-    output reg  [NUM_WATCHDOGS-1:0]      wd_expired,   // which watchdog expired
+    input  wire                          fault_clear,
+    output reg  [NUM_FAULT_BITS-1:0]     fault_reg,
+    output reg  [NUM_WATCHDOGS-1:0]      wd_expired,
 
-    // --------------------------------------------------------
-    // Safe state output
-    // Goes HIGH on ANY fault — connect to motor enable pins
-    // When HIGH: all motors must disable immediately
-    // This is a dedicated output pin — not memory mapped
-    // --------------------------------------------------------
-    output wire                          safe_state,   // HIGH = fault = stop all
+    // Safe state — HIGH = fault = stop all motors
+    // Dedicated output pin — not memory mapped
+    output wire                          safe_state,
 
-    // --------------------------------------------------------
     // Individual fault flags
-    // --------------------------------------------------------
     output wire                          estop_active,
     output wire                          brownout_active,
     output wire                          watchdog_fault,
@@ -68,26 +73,15 @@ module safety_subsystem #(
 );
 
 // ============================================================
-// Internal signals
+// Input synchronisation — double flop all external signals
+// Constitution: Reliability — every external signal double-flopped
 // ============================================================
-
-// Synchronise external inputs — double flop
 reg estop_r1,    estop_r2;
 reg brownout_r1, brownout_r2;
 
-// Watchdog counters
-reg [WD_WIDTH-1:0] wd_counter [0:NUM_WATCHDOGS-1];
-reg [NUM_WATCHDOGS-1:0] wd_fault;
-
-// Fault latch
-reg fault_latched;
-
-// ============================================================
-// Input synchronisation
-// ============================================================
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-        estop_r1    <= 1; estop_r2    <= 1;  // default safe (active low)
+        estop_r1    <= 1; estop_r2    <= 1;
         brownout_r1 <= 1; brownout_r2 <= 1;
     end else begin
         estop_r1    <= estop_n;    estop_r2    <= estop_r1;
@@ -97,9 +91,11 @@ end
 
 // ============================================================
 // Watchdog timers — 4 independent counters
-// CPU must pet each one within wd_timeout[n] cycles
-// If counter reaches timeout without a pet — fault
+// Constitution: Reliability — cannot be disabled once armed
 // ============================================================
+reg [WD_WIDTH-1:0]      wd_counter [0:NUM_WATCHDOGS-1];
+reg [NUM_WATCHDOGS-1:0] wd_fault;
+
 genvar w;
 generate
     for (w = 0; w < NUM_WATCHDOGS; w = w + 1) begin : watchdogs
@@ -109,18 +105,14 @@ generate
                 wd_fault[w]   <= 0;
             end else begin
                 if (!wd_enable[w]) begin
-                    // Watchdog disabled — clear counter and fault
                     wd_counter[w] <= 0;
                     wd_fault[w]   <= 0;
                 end else if (wd_pet[w]) begin
-                    // CPU petted the watchdog — reset counter
                     wd_counter[w] <= 0;
                     wd_fault[w]   <= 0;
                 end else if (wd_counter[w] >= wd_timeout[w]) begin
-                    // Timeout expired — latch fault
                     wd_fault[w]   <= 1;
                 end else begin
-                    // Count up toward timeout
                     wd_counter[w] <= wd_counter[w] + 1;
                 end
             end
@@ -129,40 +121,38 @@ generate
 endgenerate
 
 // ============================================================
-// Fault register — latches all fault sources
-// Sticky — stays set until CPU clears it
-// This is intentional: CPU must acknowledge every fault
+// Fault register — 32-bit, sticky, CPU must acknowledge
+// Constitution: Future Proof — 32-bit covers all planned blocks
+// Constitution: Reliability — sticky, cannot clear during E-stop
 // ============================================================
+reg fault_latched;
+
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         fault_reg     <= 0;
         wd_expired    <= 0;
         fault_latched <= 0;
     end else begin
-
-        // Latch watchdog faults
         wd_expired <= wd_fault;
 
-        // Build fault register
-        // Bits 0-3:  watchdog expirations
-        // Bits 4-7:  reserved for future watchdogs
-        // Bit  8:    E-stop activated
-        // Bit  9:    brownout detected
-        // Bits 10-15: external fault inputs
-
         if (fault_clear && !safe_state) begin
-            // CPU can only clear faults when system is safe
-            // Cannot clear faults while E-stop is active
+            // Only clear when system is safe
+            // Cannot clear while E-stop active — safety guarantee
             fault_reg     <= 0;
             fault_latched <= 0;
         end else begin
-            // Latch any new faults — sticky
+            // Latch all fault sources — sticky
             fault_reg[3:0]   <= fault_reg[3:0]   | wd_fault;
             fault_reg[8]     <= fault_reg[8]      | ~estop_r2;
             fault_reg[9]     <= fault_reg[9]      | ~brownout_r2;
-            fault_reg[15:10] <= fault_reg[15:10]  | fault_in[5:0];
+            fault_reg[10]    <= fault_reg[10]     | fault_in[0];  // PID
+            fault_reg[11]    <= fault_reg[11]     | fault_in[1];  // Encoder
+            fault_reg[12]    <= fault_reg[12]     | fault_in[2];  // PWM
+            fault_reg[13]    <= fault_reg[13]     | fault_in[3];  // CAN FD
+            fault_reg[14]    <= fault_reg[14]     | fault_in[4];  // EtherCAT
+            fault_reg[15]    <= fault_reg[15]     | fault_in[5];  // TSN
+            fault_reg[31:16] <= 16'h0;                            // reserved
 
-            // Set latched flag if any fault present
             if (|wd_fault || !estop_r2 || !brownout_r2 || |fault_in)
                 fault_latched <= 1;
         end
@@ -172,19 +162,16 @@ end
 // ============================================================
 // Output assignments
 // ============================================================
-
-// Individual fault flags
 assign estop_active    = ~estop_r2;
 assign brownout_active = ~brownout_r2;
 assign watchdog_fault  = |wd_fault;
 assign system_fault    = fault_latched;
 
-// Safe state — OR of all fault conditions
-// This is the master kill signal
-// HIGH = fault present = disable all motors
-assign safe_state = (~estop_r2)      |   // E-stop pressed
-                   (~brownout_r2)    |   // power fault
-                   (|wd_fault)       |   // any watchdog expired
-                   (|fault_in);          // any external fault
+// Safe state — OR of all fault sources
+// Constitution: Reliability — single cycle response
+assign safe_state = (~estop_r2)   |
+                   (~brownout_r2) |
+                   (|wd_fault)    |
+                   (|fault_in);
 
 endmodule

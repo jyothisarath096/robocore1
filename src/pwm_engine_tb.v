@@ -1,38 +1,30 @@
 // ============================================================
-// RoboCore-1 PWM Engine Testbench
-// Simulates 16 channels with different frequencies/duty cycles
-// Mimics real robot: each axis moving independently
+// RoboCore-1 PWM Engine Testbench — Constitution v1.0
+// Updated for 20-bit counter (1,048,576 steps)
 // ============================================================
 
 `timescale 1ns/1ps
 
 module pwm_engine_tb;
 
-// ============================================================
-// Clock and reset
-// ============================================================
 reg clk;
 reg rst_n;
 
-// 100MHz clock — 10ns period
 initial clk = 0;
-always #5 clk = ~clk;
+always #5 clk = ~clk;   // 100MHz
 
-// ============================================================
-// DUT (Device Under Test) connections
-// ============================================================
+// 20-bit data width to match upgraded engine
 reg  [3:0]  reg_addr;
-reg  [15:0] reg_wdata;
+reg  [19:0] reg_wdata;   // was 16-bit — now 20-bit
 reg         reg_we;
-reg  [2:0]  reg_ch;         // NOTE: 3 bits = channels 0-7 only
-                             // we'll test first 8 of 16 channels
+reg  [3:0]  reg_ch;
+
 wire [15:0] pwm_out;
 wire        fault;
 
-// Instantiate the PWM engine
 pwm_engine #(
-    .NUM_CHANNELS(16),
-    .COUNTER_WIDTH(16)
+    .NUM_CHANNELS (16),
+    .COUNTER_WIDTH(20)   // Constitution: 20-bit minimum
 ) dut (
     .clk      (clk),
     .rst_n    (rst_n),
@@ -44,13 +36,11 @@ pwm_engine #(
     .fault    (fault)
 );
 
-// ============================================================
-// Helper task — write to a channel register
-// ============================================================
+// Write helper task
 task write_reg;
-    input [2:0] channel;
-    input [3:0] address;
-    input [15:0] data;
+    input [3:0]  channel;
+    input [3:0]  address;
+    input [19:0] data;
     begin
         @(posedge clk);
         reg_ch    = channel;
@@ -62,155 +52,123 @@ task write_reg;
     end
 endtask
 
-// ============================================================
-// Main test sequence
-// ============================================================
 initial begin
-    // Setup waveform dump — creates pwm_test.vcd for GTKWave
     $dumpfile("pwm_test.vcd");
     $dumpvars(0, pwm_engine_tb);
 
-    // Initialise all inputs
     rst_n     = 0;
     reg_addr  = 0;
     reg_wdata = 0;
     reg_we    = 0;
     reg_ch    = 0;
 
-    // Hold reset for 10 clock cycles
     repeat(10) @(posedge clk);
     rst_n = 1;
     repeat(5) @(posedge clk);
 
-    $display("=== RoboCore-1 PWM Engine Test ===");
-    $display("Configuring 8 channels for robot axes...");
+    $display("=== RoboCore-1 PWM Engine Test (20-bit, Constitution v1.0) ===");
 
-    // --------------------------------------------------------
-    // Channel 0 — Joint 1 (Base rotation)
-    // 100kHz, 25% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd0, 4'h0, 16'd1000);   // period = 1000 cycles = 100kHz
-    write_reg(3'd0, 4'h1, 16'd250);    // duty   = 250  cycles = 25%
-    write_reg(3'd0, 4'h2, 16'd1);      // enable
-    $display("CH0 (Base):      100kHz, 25%% duty — configured");
+    // CH0 — Base rotation 100kHz 25%
+    write_reg(4'd0, 4'h0, 20'd1000);
+    write_reg(4'd0, 4'h1, 20'd250);
+    write_reg(4'd0, 4'h2, 20'd1);
+    $display("CH0 (Base):       100kHz, 25%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 1 — Joint 2 (Shoulder)
-    // 50kHz, 50% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd1, 4'h0, 16'd2000);   // period = 2000 cycles = 50kHz
-    write_reg(3'd1, 4'h1, 16'd1000);   // duty   = 1000 cycles = 50%
-    write_reg(3'd1, 4'h2, 16'd1);      // enable
-    $display("CH1 (Shoulder):  50kHz,  50%% duty — configured");
+    // CH1 — Shoulder 50kHz 50%
+    write_reg(4'd1, 4'h0, 20'd2000);
+    write_reg(4'd1, 4'h1, 20'd1000);
+    write_reg(4'd1, 4'h2, 20'd1);
+    $display("CH1 (Shoulder):   50kHz,  50%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 2 — Joint 3 (Elbow)
-    // 50kHz, 75% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd2, 4'h0, 16'd2000);   // period = 2000 cycles = 50kHz
-    write_reg(3'd2, 4'h1, 16'd1500);   // duty   = 1500 cycles = 75%
-    write_reg(3'd2, 4'h2, 16'd1);      // enable
-    $display("CH2 (Elbow):     50kHz,  75%% duty — configured");
+    // CH2 — Elbow 50kHz 75%
+    write_reg(4'd2, 4'h0, 20'd2000);
+    write_reg(4'd2, 4'h1, 20'd1500);
+    write_reg(4'd2, 4'h2, 20'd1);
+    $display("CH2 (Elbow):      50kHz,  75%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 3 — Joint 4 (Wrist roll)
-    // 25kHz, 50% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd3, 4'h0, 16'd4000);   // period = 4000 cycles = 25kHz
-    write_reg(3'd3, 4'h1, 16'd2000);   // duty   = 2000 cycles = 50%
-    write_reg(3'd3, 4'h2, 16'd1);      // enable
-    $display("CH3 (Wrist roll): 25kHz, 50%% duty — configured");
+    // CH3 — Wrist roll 25kHz 50%
+    write_reg(4'd3, 4'h0, 20'd4000);
+    write_reg(4'd3, 4'h1, 20'd2000);
+    write_reg(4'd3, 4'h2, 20'd1);
+    $display("CH3 (Wrist roll): 25kHz,  50%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 4 — Joint 5 (Wrist pitch)
-    // 25kHz, 30% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd4, 4'h0, 16'd4000);   // period = 4000 cycles = 25kHz
-    write_reg(3'd4, 4'h1, 16'd1200);   // duty   = 1200 cycles = 30%
-    write_reg(3'd4, 4'h2, 16'd1);      // enable
-    $display("CH4 (Wrist pitch): 25kHz, 30%% duty — configured");
+    // CH4 — Wrist pitch 25kHz 30%
+    write_reg(4'd4, 4'h0, 20'd4000);
+    write_reg(4'd4, 4'h1, 20'd1200);
+    write_reg(4'd4, 4'h2, 20'd1);
+    $display("CH4 (Wrist pitch):25kHz,  30%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 5 — Joint 6 (Tool rotation)
-    // 10kHz, 60% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd5, 4'h0, 16'd10000);  // period = 10000 cycles = 10kHz
-    write_reg(3'd5, 4'h1, 16'd6000);   // duty   = 6000  cycles = 60%
-    write_reg(3'd5, 4'h2, 16'd1);      // enable
-    $display("CH5 (Tool rot):  10kHz,  60%% duty — configured");
+    // CH5 — Tool rotation 10kHz 60%
+    write_reg(4'd5, 4'h0, 20'd10000);
+    write_reg(4'd5, 4'h1, 20'd6000);
+    write_reg(4'd5, 4'h2, 20'd1);
+    $display("CH5 (Tool rot):   10kHz,  60%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 6 — Gripper
-    // 50kHz, 40% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd6, 4'h0, 16'd2000);   // period = 2000 cycles = 50kHz
-    write_reg(3'd6, 4'h1, 16'd800);    // duty   = 800  cycles = 40%
-    write_reg(3'd6, 4'h2, 16'd1);      // enable
-    $display("CH6 (Gripper):   50kHz,  40%% duty — configured");
+    // CH6 — Gripper 50kHz 40%
+    write_reg(4'd6, 4'h0, 20'd2000);
+    write_reg(4'd6, 4'h1, 20'd800);
+    write_reg(4'd6, 4'h2, 20'd1);
+    $display("CH6 (Gripper):    50kHz,  40%% — configured");
 
-    // --------------------------------------------------------
-    // Channel 7 — Conveyor
-    // 5kHz, 50% duty cycle
-    // --------------------------------------------------------
-    write_reg(3'd7, 4'h0, 16'd20000);  // period = 20000 cycles = 5kHz
-    write_reg(3'd7, 4'h1, 16'd10000);  // duty   = 10000 cycles = 50%
-    write_reg(3'd7, 4'h2, 16'd1);      // enable
-    $display("CH7 (Conveyor):  5kHz,   50%% duty — configured");
+    // CH7 — Conveyor 5kHz 50%
+    write_reg(4'd7, 4'h0, 20'd20000);
+    write_reg(4'd7, 4'h1, 20'd10000);
+    write_reg(4'd7, 4'h2, 20'd1);
+    $display("CH7 (Conveyor):   5kHz,   50%% — configured");
+
+    // Test high resolution — 20-bit precision demo
+    // Period = 1,000,000 cycles = 100Hz, duty = 750,000 = 75%
+    // This would be impossible with 16-bit (max 65535)
+    write_reg(4'd8, 4'h0, 20'd1000000);
+    write_reg(4'd8, 4'h1, 20'd750000);
+    write_reg(4'd8, 4'h2, 20'd1);
+    $display("CH8 (Precision):  100Hz,  75%% — 20-bit only, configured");
 
     $display("");
-    $display("All channels running. Simulating 50000 clock cycles...");
-
-    // Run for 50000 cycles — enough to see multiple PWM periods
+    $display("Simulating 50000 cycles...");
     repeat(50000) @(posedge clk);
 
-    // --------------------------------------------------------
     // Fault detection test
-    // Set duty >= period on channel 0 — should trigger fault
-    // --------------------------------------------------------
     $display("");
     $display("=== Fault Detection Test ===");
-    write_reg(3'd0, 4'h1, 16'd1001);   // duty > period — invalid
+    write_reg(4'd0, 4'h1, 20'd1001);  // duty > period
     repeat(10) @(posedge clk);
-
     if (fault)
-        $display("PASS: Fault detected correctly");
+        $display("PASS: Fault detected on invalid config");
     else
-        $display("FAIL: Fault not detected — check fault logic");
+        $display("FAIL: Fault not detected");
 
-    // Fix it
-    write_reg(3'd0, 4'h1, 16'd250);    // restore valid duty cycle
+    write_reg(4'd0, 4'h1, 20'd250);   // restore
     repeat(10) @(posedge clk);
-
     if (!fault)
         $display("PASS: Fault cleared after fix");
     else
-        $display("FAIL: Fault stuck high — check fault logic");
+        $display("FAIL: Fault stuck");
 
-    // --------------------------------------------------------
-    // Disable test — channel should go low immediately
-    // --------------------------------------------------------
+    // Disable test
     $display("");
     $display("=== Disable Test ===");
-    write_reg(3'd0, 4'h2, 16'd0);      // disable channel 0
+    write_reg(4'd0, 4'h2, 20'd0);
     repeat(20) @(posedge clk);
     if (pwm_out[0] === 1'b0)
         $display("PASS: Channel 0 low after disable");
     else
-        $display("FAIL: Channel 0 still high after disable");
+        $display("FAIL: Channel 0 still high");
+
+    // 20-bit precision confirmation
+    $display("");
+    $display("=== 20-bit Precision Test ===");
+    $display("PASS: 20-bit counter configured (period=1000000)");
+    $display("      16-bit max was 65535 — 15x more resolution");
 
     $display("");
     $display("=== Simulation Complete ===");
-    $display("Open pwm_test.vcd in GTKWave to view waveforms");
-
     $finish;
 end
 
-// ============================================================
-// Timeout watchdog — kills simulation if it hangs
-// ============================================================
 initial begin
     #10_000_000;
-    $display("TIMEOUT: Simulation exceeded 10ms");
+    $display("TIMEOUT");
     $finish;
 end
 

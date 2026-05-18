@@ -1,24 +1,19 @@
 // ============================================================
-// RoboCore-1 Encoder Interface Testbench
-// Tests position counting, direction, index, and error detect
+// RoboCore-1 Encoder Interface Testbench — Constitution v1.0
+// Updated for 4x quadrature decode
+// 4x decode: counts all 4 edges per cycle = 4 counts per cycle
 // ============================================================
 
 `timescale 1ns/1ps
 
 module encoder_interface_tb;
 
-// ============================================================
-// Clock and reset
-// ============================================================
 reg clk;
 reg rst_n;
 
 initial clk = 0;
-always #5 clk = ~clk;      // 100MHz
+always #5 clk = ~clk;
 
-// ============================================================
-// DUT connections
-// ============================================================
 reg  [15:0] enc_a;
 reg  [15:0] enc_b;
 reg  [15:0] enc_idx;
@@ -51,65 +46,53 @@ encoder_interface #(
     .error_flag(error_flag)
 );
 
-// ============================================================
-// Task — read position of a channel
-// ============================================================
+// Read position task — flush pipeline before reading
 task read_position;
     input [3:0] channel;
     begin
-        repeat(10) @(posedge clk);  // flush synchroniser pipeline
+        repeat(10) @(posedge clk);
         reg_ch = channel;
         reg_re = 1;
         @(posedge clk);
         reg_re = 0;
-        repeat(5) @(posedge clk);  // wait for data to settle
+        repeat(5) @(posedge clk);
     end
 endtask
 
-// ============================================================
-// Task — generate N forward quadrature pulses on channel 0
-// ============================================================
+// Forward quadrature — 4x decode gives 4 counts per mechanical cycle
 task quad_forward;
     input integer n;
     integer i;
     begin
         for (i = 0; i < n; i = i + 1) begin
-            // A rises, B is low = forward
-            @(posedge clk); enc_a[0] = 1; enc_b[0] = 0;
-            @(posedge clk); enc_a[0] = 1; enc_b[0] = 1;
-            @(posedge clk); enc_a[0] = 0; enc_b[0] = 1;
-            @(posedge clk); enc_a[0] = 0; enc_b[0] = 0;
+            @(posedge clk); enc_a[0] = 1; enc_b[0] = 0;  // A rises, B low  = +1
+            @(posedge clk); enc_a[0] = 1; enc_b[0] = 1;  // B rises, A high = +1
+            @(posedge clk); enc_a[0] = 0; enc_b[0] = 1;  // A falls, B high = +1
+            @(posedge clk); enc_a[0] = 0; enc_b[0] = 0;  // B falls, A low  = +1
+            // Total: 4 counts per cycle (4x decode)
         end
     end
 endtask
 
-// ============================================================
-// Task — generate N backward quadrature pulses on channel 0
-// ============================================================
+// Backward quadrature
 task quad_backward;
     input integer n;
     integer i;
     begin
         for (i = 0; i < n; i = i + 1) begin
-            // A rises, B is high = backward
-            @(posedge clk); enc_a[0] = 0; enc_b[0] = 1;
-            @(posedge clk); enc_a[0] = 1; enc_b[0] = 1;
-            @(posedge clk); enc_a[0] = 1; enc_b[0] = 0;
-            @(posedge clk); enc_a[0] = 0; enc_b[0] = 0;
+            @(posedge clk); enc_a[0] = 0; enc_b[0] = 1;  // B rises, A low  = -1
+            @(posedge clk); enc_a[0] = 1; enc_b[0] = 1;  // A rises, B high = -1
+            @(posedge clk); enc_a[0] = 1; enc_b[0] = 0;  // B falls, A high = -1
+            @(posedge clk); enc_a[0] = 0; enc_b[0] = 0;  // A falls, B low  = -1
+            // Total: 4 counts per cycle (4x decode)
         end
     end
 endtask
-
-// ============================================================
-// Main test
-// ============================================================
-integer pos;
 
 initial begin
     $dumpfile("encoder_test.vcd");
     $dumpvars(0, encoder_interface_tb);
 
-    // Initialise
     rst_n     = 0;
     enc_a     = 0;
     enc_b     = 0;
@@ -123,35 +106,40 @@ initial begin
     rst_n = 1;
     repeat(5) @(posedge clk);
 
-    $display("=== RoboCore-1 Encoder Interface Test ===");
+    $display("=== RoboCore-1 Encoder Interface Test (4x decode, Constitution v1.0) ===");
+    $display("4x decode: 4 counts per mechanical cycle (was 2x = 2 counts)");
+    $display("2x resolution improvement — same hardware cost");
 
     // --------------------------------------------------------
     // Test 1 — Forward counting
+    // 100 mechanical cycles x 4 counts = 400 counts expected
     // --------------------------------------------------------
     $display("");
-    $display("Test 1: Forward counting — 100 pulses = 200 counts (2x decode) on CH0");
+    $display("Test 1: Forward counting — 100 pulses = 400 counts (4x decode)");
     quad_forward(100);
     read_position(4'd0);
     repeat(5) @(posedge clk);
-    $display("Position after 100 forward pulses: %0d", reg_rdata);
-    if (reg_rdata == 32'd200)
-        $display("PASS: Position = 200");
+    $display("Position: %0d", reg_rdata);
+    if (reg_rdata == 32'd400)
+        $display("PASS: Position = 400 (4x decode confirmed)");
     else
-        $display("FAIL: Expected 200, got %0d", reg_rdata);
+        $display("FAIL: Expected 400, got %0d", reg_rdata);
 
     // --------------------------------------------------------
     // Test 2 — Backward counting
+    // 30 backward cycles x 4 = 120 counts back
+    // 400 - 120 = 280 expected
     // --------------------------------------------------------
     $display("");
-    $display("Test 2: Backward counting — 30 pulses back = 60 counts");
+    $display("Test 2: Backward — 30 pulses = 120 counts back (280 remaining)");
     quad_backward(30);
     read_position(4'd0);
     repeat(5) @(posedge clk);
-    $display("Position after 30 backward pulses: %0d", reg_rdata);
-    if (reg_rdata == 32'd140)
-        $display("PASS: Position = 140");
+    $display("Position: %0d", reg_rdata);
+    if (reg_rdata == 32'd280)
+        $display("PASS: Position = 280");
     else
-        $display("FAIL: Expected 140, got %0d", reg_rdata);
+        $display("FAIL: Expected 280, got %0d", reg_rdata);
 
     // --------------------------------------------------------
     // Test 3 — Direction flag
@@ -161,19 +149,19 @@ initial begin
     quad_forward(1);
     repeat(5) @(posedge clk);
     if (direction[0] == 1'b1)
-        $display("PASS: Direction = forward after forward pulse");
+        $display("PASS: Direction = forward");
     else
-        $display("FAIL: Direction wrong after forward pulse");
+        $display("FAIL: Direction wrong after forward");
 
     quad_backward(1);
     repeat(5) @(posedge clk);
     if (direction[0] == 1'b0)
-        $display("PASS: Direction = backward after backward pulse");
+        $display("PASS: Direction = backward");
     else
-        $display("FAIL: Direction wrong after backward pulse");
+        $display("FAIL: Direction wrong after backward");
 
     // --------------------------------------------------------
-    // Test 4 — Index pulse detection
+    // Test 4 — Index pulse
     // --------------------------------------------------------
     $display("");
     $display("Test 4: Index pulse detection");
@@ -181,40 +169,39 @@ initial begin
     repeat(3) @(posedge clk);
     enc_idx[0] = 0;
     repeat(5) @(posedge clk);
-    if (idx_flag[0] == 1'b1)
-        $display("PASS: Index flag set on index pulse");
+    if (idx_flag[0])
+        $display("PASS: Index flag set");
     else
         $display("FAIL: Index flag not set");
 
-    // Clear index flag
     @(posedge clk); clear_idx[0] = 1;
     @(posedge clk); clear_idx[0] = 0;
     repeat(3) @(posedge clk);
-    if (idx_flag[0] == 1'b0)
-        $display("PASS: Index flag cleared by CPU");
+    if (!idx_flag[0])
+        $display("PASS: Index flag cleared");
     else
-        $display("FAIL: Index flag stuck high");
+        $display("FAIL: Index flag stuck");
 
     // --------------------------------------------------------
-    // Test 5 — Position clear (homing)
+    // Test 5 — Homing
     // --------------------------------------------------------
     $display("");
-    $display("Test 5: Position clear (robot homing)");
+    $display("Test 5: Position clear (homing)");
     @(posedge clk); clear_pos[0] = 1;
     @(posedge clk); clear_pos[0] = 0;
     read_position(4'd0);
     repeat(5) @(posedge clk);
     if (reg_rdata == 32'd0)
-        $display("PASS: Position cleared to zero — homing works");
+        $display("PASS: Position cleared to zero");
     else
         $display("FAIL: Position not cleared, got %0d", reg_rdata);
 
     // --------------------------------------------------------
-    // Test 6 — Multiple channels independent
+    // Test 6 — Channel independence
+    // CH1: 50 cycles x 4 = 200 counts
     // --------------------------------------------------------
     $display("");
-    $display("Test 6: Multiple channels independent");
-    // Drive channel 1 forward 50 pulses
+    $display("Test 6: Multi-channel independence (CH1: 50 pulses = 200 counts)");
     repeat(50) begin
         @(posedge clk); enc_a[1] = 1; enc_b[1] = 0;
         @(posedge clk); enc_a[1] = 1; enc_b[1] = 1;
@@ -223,17 +210,26 @@ initial begin
     end
     read_position(4'd1);
     repeat(5) @(posedge clk);
-    if (reg_rdata == 32'd100)
-        $display("PASS: CH1 position = 100, independent of CH0");
+    if (reg_rdata == 32'd200)
+        $display("PASS: CH1 position = 200, independent of CH0");
     else
-        $display("FAIL: CH1 expected 100, got %0d", reg_rdata);
+        $display("FAIL: CH1 expected 200, got %0d", reg_rdata);
+
+    // --------------------------------------------------------
+    // Test 7 — 4x vs 2x resolution comparison
+    // --------------------------------------------------------
+    $display("");
+    $display("=== 4x Precision Summary ===");
+    $display("2x decode (old): 2 counts per cycle");
+    $display("4x decode (new): 4 counts per cycle");
+    $display("Resolution gain: 2x improvement at zero hardware cost");
+    $display("At 1000 CPR encoder: 4000 counts/rev vs 2000 (old)");
 
     $display("");
     $display("=== Simulation Complete ===");
     $finish;
 end
 
-// Timeout watchdog
 initial begin
     #50_000_000;
     $display("TIMEOUT");
