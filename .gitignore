@@ -24,3 +24,4 @@ fix_irq.sh
 top_sim
 fix_top.sh
 fix_pid_test.sh
+*.gds # GDS files are binary and large
