@@ -1,0 +1,570 @@
+// ============================================================
+// RoboCore-1 Top Level SoC
+// Open-source robotics SoC for factory automation
+//
+// Cardinal Principles — Constitution v1.0:
+//   Precision   — 10MHz PID, 20-bit PWM, 4x encoder, 17-bit CRC
+//   Reliability — Hardware safety, watchdogs, E-stop, double-flop
+//   Speed       — CAN FD 8Mbit/s, EtherCAT 100Mbit/s, 10MHz PID
+//   Future Proof — RISC-V, CAN FD, EtherCAT, TSN-ready, APB3
+//
+// Chip ID:    0xAC010001
+// Process:    SkyWater SKY130 (130nm)
+// Target:     Factory automation, industrial robotics
+// License:    MIT — fully open source
+//
+// Block instantiation:
+//   1. Tick Generator     — precision timing
+//   2. PWM Engine         — 16ch motor drive
+//   3. Encoder Interface  — 16ch position feedback
+//   4. PID Controller     — 8ch hardware control loops
+//   5. Safety Subsystem   — watchdog, E-stop, faults
+//   6. CAN FD Controller  — industrial fieldbus
+//   7. EtherCAT MAC       — high-speed industrial Ethernet
+//   8. APB Bus Interface  — CPU register access
+//
+// External interfaces:
+//   - RISC-V CPU (APB master — external core)
+//   - 16x PWM outputs (motor drivers)
+//   - 16x Encoder inputs (quadrature A/B/IDX)
+//   - CAN FD transceiver (TX/RX)
+//   - EtherCAT PHY (RMII)
+//   - E-stop input (hardwired)
+//   - Safe state output (hardwired to motor enables)
+//
+// GitHub: https://github.com/jyothisarath096/robocore1
+// Open Source — MIT License
+// ============================================================
+
+module robocore1_top (
+    // --------------------------------------------------------
+    // System
+    // --------------------------------------------------------
+    input  wire         clk,            // 100MHz system clock
+    input  wire         rst_n,          // active-low reset
+
+    // --------------------------------------------------------
+    // RISC-V CPU APB interface
+    // --------------------------------------------------------
+    input  wire [31:0]  cpu_paddr,
+    input  wire         cpu_psel,
+    input  wire         cpu_penable,
+    input  wire         cpu_pwrite,
+    input  wire [31:0]  cpu_pwdata,
+    output wire [31:0]  cpu_prdata,
+    output wire         cpu_pready,
+    output wire         cpu_pslverr,
+    output wire         cpu_irq,        // interrupt to CPU
+
+    // --------------------------------------------------------
+    // PWM outputs — connect to motor driver ICs
+    // --------------------------------------------------------
+    output wire [15:0]  pwm_out,
+
+    // --------------------------------------------------------
+    // Encoder inputs — connect to quadrature encoder ICs
+    // --------------------------------------------------------
+    input  wire [15:0]  enc_a,
+    input  wire [15:0]  enc_b,
+    input  wire [15:0]  enc_idx,
+
+    // --------------------------------------------------------
+    // CAN FD — connect to ISO 11898-2 transceiver
+    // --------------------------------------------------------
+    input  wire         can_rx,
+    output wire         can_tx,
+
+    // --------------------------------------------------------
+    // EtherCAT — connect to 100Mbit/s PHY via RMII
+    // --------------------------------------------------------
+    input  wire [1:0]   rmii_rxd,
+    input  wire         rmii_rx_dv,
+    input  wire         rmii_rx_er,
+    output wire [1:0]   rmii_txd,
+    output wire         rmii_tx_en,
+    input  wire         rmii_ref_clk,
+
+    // --------------------------------------------------------
+    // Safety — hardwired pins
+    // --------------------------------------------------------
+    input  wire         estop_n,        // E-stop button (active low)
+    input  wire         brownout_n,     // power monitor (active low)
+    output wire         safe_state,     // HIGH = fault = disable motors
+
+    // --------------------------------------------------------
+    // Debug
+    // --------------------------------------------------------
+    output wire         heartbeat       // 1Hz LED blink
+);
+
+// ============================================================
+// Internal wires — Tick Generator outputs
+// ============================================================
+wire tick_10mhz;
+wire tick_1mhz;
+wire tick_100khz;
+wire tick_1khz;
+
+// ============================================================
+// Internal wires — PWM Engine
+// ============================================================
+wire [3:0]   pwm_reg_addr;
+wire [19:0]  pwm_reg_wdata;
+wire         pwm_reg_we;
+wire [3:0]   pwm_reg_ch;
+wire         pwm_fault;
+
+// ============================================================
+// Internal wires — Encoder Interface
+// ============================================================
+wire [3:0]   enc_reg_ch;
+wire         enc_reg_re;
+wire [31:0]  enc_reg_rdata;
+wire [15:0]  enc_clear_pos;
+wire [15:0]  enc_clear_idx;
+wire [15:0]  enc_direction;
+wire [15:0]  enc_idx_flag;
+wire [15:0]  enc_error_flag;
+
+// ============================================================
+// Internal wires — PID Controller
+// ============================================================
+wire [31:0]  pid_target  [0:7];
+wire [15:0]  pid_kp      [0:7];
+wire [15:0]  pid_ki      [0:7];
+wire [15:0]  pid_kd      [0:7];
+wire [15:0]  pid_out_max [0:7];
+wire [47:0]  pid_int_limit = 48'd100000; // fixed anti-windup limit
+wire [31:0]  pid_actual   [0:7];        // actual positions for PID
+wire [47:0]  pid_int_limit_arr [0:7];   // per-channel int limit array
+
+// Connect encoder position to all PID channels
+// In full system, each channel reads its own encoder
+// For now, broadcast enc_reg_rdata to all channels
+genvar pa;
+generate
+    for (pa = 0; pa < 8; pa = pa + 1) begin : pid_actual_connect
+        assign pid_actual[pa]        = enc_reg_rdata;
+        assign pid_int_limit_arr[pa] = pid_int_limit;
+    end
+endgenerate
+wire [7:0]   pid_enable;
+wire [15:0]  pid_out     [0:7];
+wire [7:0]   pid_at_target;
+wire [7:0]   pid_saturated;
+
+// ============================================================
+// Internal wires — Safety Subsystem
+// ============================================================
+wire [3:0]   wd_pet;
+wire [3:0]   wd_enable;
+wire [23:0]  wd_timeout_val = 24'd10_000_000; // 100ms at 100MHz
+wire [23:0]  wd_timeout  [0:3];
+wire [31:0]  fault_reg;
+wire         fault_clear;
+wire         safe_state_int;
+wire         estop_active;
+wire         brownout_active;
+wire         watchdog_fault;
+wire         system_fault;
+wire [3:0]   wd_expired;
+
+// Broadcast same timeout to all watchdogs
+assign wd_timeout[0] = wd_timeout_val;
+assign wd_timeout[1] = wd_timeout_val;
+assign wd_timeout[2] = wd_timeout_val;
+assign wd_timeout[3] = wd_timeout_val;
+
+// ============================================================
+// Internal wires — CAN FD
+// ============================================================
+wire [28:0]  can_tx_id;
+wire         can_tx_ide;
+wire         can_tx_brs;
+wire         can_tx_fdf;
+wire [3:0]   can_tx_dlc;
+wire [511:0] can_tx_data;
+wire         can_tx_valid;
+wire         can_tx_ready;
+wire [28:0]  can_rx_id;
+wire [3:0]   can_rx_dlc;
+wire [511:0] can_rx_data;
+wire         can_rx_valid;
+wire         can_rx_ack;
+wire [7:0]   can_tx_err;
+wire [7:0]   can_rx_err;
+wire         can_bus_off;
+wire         can_err_passive;
+wire         can_err_warning;
+wire         can_tx_busy;
+wire         can_rx_busy;
+wire         can_fault;
+
+// ============================================================
+// Internal wires — EtherCAT MAC
+// ============================================================
+wire [15:0]  ec_pd_addr;
+wire [31:0]  ec_pd_wdata;
+wire         ec_pd_we;
+wire         ec_pd_re;
+wire [31:0]  ec_pd_rdata;
+wire         ec_pd_valid;
+wire [63:0]  dc_local_time;
+wire [63:0]  dc_offset = 64'd0;  // master sets this via APB
+wire         dc_sync0;
+wire         dc_sync1;
+wire [63:0]  dc_sync0_period = 64'd1_000_000;  // 1ms
+wire [63:0]  dc_sync1_period = 64'd2_000_000;  // 2ms
+wire [3:0]   ec_state;
+wire         ec_link;
+wire         ec_frame_rx;
+wire         ec_frame_tx;
+wire [15:0]  ec_wkc;
+wire         ec_timeout;
+wire         ec_operational;
+wire         ec_fault;
+
+// ============================================================
+// Internal wires — APB bus / interrupt controller
+// ============================================================
+wire [15:0]  irq_in;
+wire         irq_out;
+wire [15:0]  irq_mask;
+wire [15:0]  irq_clear;
+
+// ============================================================
+// Fault aggregation — all blocks report to safety subsystem
+// Constitution: Reliability — centralised fault management
+// ============================================================
+wire [31:0]  fault_in;
+assign fault_in[0]  = pwm_fault;
+assign fault_in[1]  = |enc_error_flag;
+assign fault_in[2]  = 1'b0;          // PID faults handled via saturation
+assign fault_in[3]  = can_bus_off;
+assign fault_in[4]  = ec_timeout;
+assign fault_in[5]  = ec_fault;
+assign fault_in[31:6] = 26'h0;
+
+// ============================================================
+// Interrupt routing — all blocks to APB IRQ controller
+// Constitution: Speed — hardware interrupts, no polling
+// ============================================================
+assign irq_in[0]  = pwm_fault;
+assign irq_in[1]  = |enc_error_flag;
+assign irq_in[2]  = |pid_at_target;
+assign irq_in[3]  = safe_state_int;
+assign irq_in[4]  = estop_active;
+assign irq_in[5]  = can_rx_valid;
+assign irq_in[6]  = can_bus_off;
+assign irq_in[7]  = ec_frame_rx;
+assign irq_in[8]  = ec_timeout;
+assign irq_in[9]  = ec_operational;
+assign irq_in[15:10] = 6'h0;
+
+// ============================================================
+// Safe state — drives motor enables externally
+// Constitution: Reliability — hardware kill, not software
+// ============================================================
+assign safe_state = safe_state_int;
+
+// ============================================================
+// Heartbeat — 1Hz blink from tick generator
+// ============================================================
+reg heartbeat_reg;
+reg [9:0] hb_count;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        heartbeat_reg <= 0;
+        hb_count      <= 0;
+    end else if (tick_1khz) begin
+        hb_count <= hb_count + 1;
+        if (hb_count == 10'd499) begin
+            heartbeat_reg <= ~heartbeat_reg;
+            hb_count      <= 0;
+        end
+    end
+end
+assign heartbeat = heartbeat_reg;
+
+// ============================================================
+// CPU IRQ
+// ============================================================
+assign cpu_irq = irq_out;
+
+// ============================================================
+// Block 1: Tick Generator
+// Constitution: Precision — 10MHz PID tick
+// ============================================================
+tick_generator #(
+    .TICK_10MHZ_DIV (10),
+    .TICK_1MHZ_DIV  (100),
+    .TICK_100KHZ_DIV(1_000),
+    .TICK_1KHZ_DIV  (100_000)
+) u_tick (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .tick_10mhz (tick_10mhz),
+    .tick_1mhz  (tick_1mhz),
+    .tick_100khz(tick_100khz),
+    .tick_1khz  (tick_1khz)
+);
+
+// ============================================================
+// Block 2: PWM Engine
+// Constitution: Precision — 20-bit, 16 channels
+// ============================================================
+pwm_engine #(
+    .NUM_CHANNELS (16),
+    .COUNTER_WIDTH(20)
+) u_pwm (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .reg_addr   (pwm_reg_addr),
+    .reg_wdata  (pwm_reg_wdata),
+    .reg_we     (pwm_reg_we),
+    .reg_ch     (pwm_reg_ch),
+    .pwm_out    (pwm_out),
+    .fault      (pwm_fault)
+);
+
+// ============================================================
+// Block 3: Encoder Interface
+// Constitution: Precision — 4x decode, 16 channels
+// ============================================================
+encoder_interface #(
+    .NUM_CHANNELS (16),
+    .COUNTER_WIDTH(32)
+) u_enc (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .enc_a      (enc_a),
+    .enc_b      (enc_b),
+    .enc_idx    (enc_idx),
+    .reg_ch     (enc_reg_ch),
+    .reg_re     (enc_reg_re),
+    .reg_rdata  (enc_reg_rdata),
+    .clear_pos  (enc_clear_pos),
+    .clear_idx  (enc_clear_idx),
+    .direction  (enc_direction),
+    .idx_flag   (enc_idx_flag),
+    .error_flag (enc_error_flag)
+);
+
+// ============================================================
+// Block 4: PID Controller
+// Constitution: Speed — 10MHz update rate
+// ============================================================
+pid_controller #(
+    .NUM_CHANNELS(8),
+    .POS_WIDTH   (32),
+    .GAIN_WIDTH  (16),
+    .OUT_WIDTH   (16),
+    .ACC_WIDTH   (48)
+) u_pid (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .tick_1mhz  (tick_10mhz),
+    .target     (pid_target),
+    .actual     (pid_actual),
+    .kp         (pid_kp),
+    .ki         (pid_ki),
+    .kd         (pid_kd),
+    .out_max    (pid_out_max),
+    .enable     (pid_enable),
+    .int_limit  (pid_int_limit_arr),
+    .pid_out    (pid_out),
+    .at_target  (pid_at_target),
+    .saturated  (pid_saturated)
+);
+
+// ============================================================
+// Block 5: Safety Subsystem
+// Constitution: Reliability — hardware safety, not software
+// ============================================================
+safety_subsystem #(
+    .NUM_WATCHDOGS (4),
+    .WD_WIDTH      (24),
+    .NUM_FAULT_BITS(32)
+) u_safety (
+    .clk            (clk),
+    .rst_n          (rst_n),
+    .wd_pet         (wd_pet),
+    .wd_timeout     (wd_timeout),
+    .wd_enable      (wd_enable),
+    .estop_n        (estop_n),
+    .brownout_n     (brownout_n),
+    .fault_in       (fault_in),
+    .fault_clear    (fault_clear),
+    .fault_reg      (fault_reg),
+    .wd_expired     (wd_expired),
+    .safe_state     (safe_state_int),
+    .estop_active   (estop_active),
+    .brownout_active(brownout_active),
+    .watchdog_fault (watchdog_fault),
+    .system_fault   (system_fault)
+);
+
+// ============================================================
+// Block 6: CAN FD Controller
+// Constitution: Speed — 8Mbit/s, Future Proof — ISO 11898-1:2015
+// ============================================================
+can_fd_controller #(
+    .FIFO_DEPTH(8)
+) u_can (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .can_rx     (can_rx),
+    .can_tx     (can_tx),
+    .tx_id      (can_tx_id),
+    .tx_ide     (can_tx_ide),
+    .tx_rtr     (1'b0),
+    .tx_brs     (can_tx_brs),
+    .tx_fdf     (can_tx_fdf),
+    .tx_dlc     (can_tx_dlc),
+    .tx_data    (can_tx_data),
+    .tx_valid   (can_tx_valid),
+    .tx_ready   (can_tx_ready),
+    .rx_id      (can_rx_id),
+    .rx_ide     (),
+    .rx_rtr     (),
+    .rx_brs     (),
+    .rx_fdf     (),
+    .rx_dlc     (can_rx_dlc),
+    .rx_data    (can_rx_data),
+    .rx_valid   (can_rx_valid),
+    .rx_ack     (can_rx_ack),
+    .arb_div    (8'd99),
+    .arb_seg1   (8'd69),
+    .arb_seg2   (8'd29),
+    .data_div   (8'd11),
+    .data_seg1  (8'd8),
+    .data_seg2  (8'd3),
+    .tx_err_cnt (can_tx_err),
+    .rx_err_cnt (can_rx_err),
+    .bus_off    (can_bus_off),
+    .err_passive(can_err_passive),
+    .err_warning(can_err_warning),
+    .tx_busy    (can_tx_busy),
+    .rx_busy    (can_rx_busy)
+);
+
+// ============================================================
+// Block 7: EtherCAT MAC
+// Constitution: Speed — 100Mbit/s, Precision — dist. clocks
+// ============================================================
+ethercat_mac #(
+    .NODE_ADDR (16'h0001),
+    .FIFO_DEPTH(8),
+    .DC_WIDTH  (64)
+) u_ec (
+    .clk            (clk),
+    .rst_n          (rst_n),
+    .rmii_rxd       (rmii_rxd),
+    .rmii_rx_dv     (rmii_rx_dv),
+    .rmii_rx_er     (rmii_rx_er),
+    .rmii_txd       (rmii_txd),
+    .rmii_tx_en     (rmii_tx_en),
+    .rmii_ref_clk   (rmii_ref_clk),
+    .pd_addr        (ec_pd_addr),
+    .pd_wdata       (ec_pd_wdata),
+    .pd_we          (ec_pd_we),
+    .pd_re          (ec_pd_re),
+    .pd_rdata       (ec_pd_rdata),
+    .pd_valid       (ec_pd_valid),
+    .dc_local_time  (dc_local_time),
+    .dc_offset      (dc_offset),
+    .dc_sync0       (dc_sync0),
+    .dc_sync1       (dc_sync1),
+    .dc_sync0_period(dc_sync0_period),
+    .dc_sync1_period(dc_sync1_period),
+    .ec_state       (ec_state),
+    .ec_link        (ec_link),
+    .ec_frame_rx    (ec_frame_rx),
+    .ec_frame_tx    (ec_frame_tx),
+    .ec_wkc         (ec_wkc),
+    .ec_timeout     (ec_timeout),
+    .ec_operational (ec_operational),
+    .fault          (ec_fault)
+);
+
+// ============================================================
+// Block 8: APB Bus Interface
+// Constitution: Speed — single cycle register access
+// ============================================================
+robocore1_apb #(
+    .CHIP_ID  (32'hAC010001),
+    .NUM_IRQ  (16)
+) u_apb (
+    .clk            (clk),
+    .rst_n          (rst_n),
+    .paddr          (cpu_paddr),
+    .psel           (cpu_psel),
+    .penable        (cpu_penable),
+    .pwrite         (cpu_pwrite),
+    .pwdata         (cpu_pwdata),
+    .prdata         (cpu_prdata),
+    .pready         (cpu_pready),
+    .pslverr        (cpu_pslverr),
+    .pwm_reg_addr   (pwm_reg_addr),
+    .pwm_reg_wdata  (pwm_reg_wdata),
+    .pwm_reg_we     (pwm_reg_we),
+    .pwm_reg_ch     (pwm_reg_ch),
+    .pwm_out        (pwm_out),
+    .pwm_fault      (pwm_fault),
+    .enc_reg_ch     (enc_reg_ch),
+    .enc_reg_re     (enc_reg_re),
+    .enc_reg_rdata  (enc_reg_rdata),
+    .enc_clear_pos  (enc_clear_pos),
+    .enc_clear_idx  (enc_clear_idx),
+    .enc_direction  (enc_direction),
+    .enc_idx_flag   (enc_idx_flag),
+    .enc_error_flag (enc_error_flag),
+    .pid_target     (pid_target),
+    .pid_kp         (pid_kp),
+    .pid_ki         (pid_ki),
+    .pid_kd         (pid_kd),
+    .pid_out_max    (pid_out_max),
+    .pid_enable     (pid_enable),
+    .pid_out        (pid_out),
+    .pid_at_target  (pid_at_target),
+    .pid_saturated  (pid_saturated),
+    .wd_pet         (wd_pet),
+    .wd_enable      (wd_enable),
+    .fault_reg      (fault_reg),
+    .fault_clear    (fault_clear),
+    .safe_state     (safe_state_int),
+    .estop_active   (estop_active),
+    .watchdog_fault (watchdog_fault),
+    .can_tx_id      (can_tx_id),
+    .can_tx_ide     (can_tx_ide),
+    .can_tx_brs     (can_tx_brs),
+    .can_tx_fdf     (can_tx_fdf),
+    .can_tx_dlc     (can_tx_dlc),
+    .can_tx_data    (can_tx_data),
+    .can_tx_valid   (can_tx_valid),
+    .can_tx_ready   (can_tx_ready),
+    .can_rx_id      (can_rx_id),
+    .can_rx_dlc     (can_rx_dlc),
+    .can_rx_data    (can_rx_data),
+    .can_rx_valid   (can_rx_valid),
+    .can_rx_ack     (can_rx_ack),
+    .can_tx_err     (can_tx_err),
+    .can_rx_err     (can_rx_err),
+    .can_bus_off    (can_bus_off),
+    .ec_pd_addr     (ec_pd_addr),
+    .ec_pd_wdata    (ec_pd_wdata),
+    .ec_pd_we       (ec_pd_we),
+    .ec_pd_re       (ec_pd_re),
+    .ec_pd_rdata    (ec_pd_rdata),
+    .ec_state       (ec_state),
+    .ec_operational (ec_operational),
+    .ec_timeout     (ec_timeout),
+    .ec_wkc         (ec_wkc),
+    .irq_out        (irq_out),
+    .irq_in         (irq_in),
+    .irq_mask       (irq_mask),
+    .irq_clear      (irq_clear)
+);
+
+endmodule
