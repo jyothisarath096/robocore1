@@ -14,7 +14,7 @@ initial clk = 0;
 always #5 clk = ~clk;
 
 reg  [3:0]  wd_pet;
-reg  [23:0] wd_timeout [0:3];
+reg  [95:0] wd_timeout_flat; // 4 x 24-bit flattened
 reg  [3:0]  wd_enable;
 reg         estop_n;
 reg         brownout_n;
@@ -37,7 +37,7 @@ safety_subsystem #(
     .clk            (clk),
     .rst_n          (rst_n),
     .wd_pet         (wd_pet),
-    .wd_timeout     (wd_timeout),
+    .wd_timeout_flat(wd_timeout_flat),
     .wd_enable      (wd_enable),
     .estop_n        (estop_n),
     .brownout_n     (brownout_n),
@@ -66,8 +66,8 @@ initial begin
     fault_in    = 32'h0;
     fault_clear = 0;
 
-    for (i = 0; i < 4; i = i + 1)
-        wd_timeout[i] = 24'd100;
+    // Pack 4x 24-bit timeouts into flat bus
+    wd_timeout_flat = {24'd100, 24'd100, 24'd100, 24'd100};
 
     repeat(10) @(posedge clk);
     rst_n = 1;

@@ -37,7 +37,7 @@ module safety_subsystem #(
 
     // Watchdog interface
     input  wire [NUM_WATCHDOGS-1:0]      wd_pet,
-    input  wire [WD_WIDTH-1:0]           wd_timeout    [0:NUM_WATCHDOGS-1],
+    input  wire [WD_WIDTH*NUM_WATCHDOGS-1:0] wd_timeout_flat, // flattened: {wd3,wd2,wd1,wd0}
     input  wire [NUM_WATCHDOGS-1:0]      wd_enable,
 
     // Emergency stop — active LOW, hardwired
@@ -88,6 +88,15 @@ always @(posedge clk or negedge rst_n) begin
         brownout_r1 <= brownout_n; brownout_r2 <= brownout_r1;
     end
 end
+
+// Unpack flat timeout bus into per-watchdog values
+wire [WD_WIDTH-1:0] wd_timeout [0:NUM_WATCHDOGS-1];
+genvar wt;
+generate
+    for (wt = 0; wt < NUM_WATCHDOGS; wt = wt + 1) begin : wd_unpack
+        assign wd_timeout[wt] = wd_timeout_flat[wt*WD_WIDTH +: WD_WIDTH];
+    end
+endgenerate
 
 // ============================================================
 // Watchdog timers — 4 independent counters
