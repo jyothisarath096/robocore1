@@ -1,0 +1,18 @@
+# Simulation binaries
+pwm_sim
+enc_sim
+pid_sim
+safety_sim
+
+# Waveform dumps
+*.vcd
+
+# OpenLane run outputs
+runs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Mac junk
+.DS_Store
