@@ -219,14 +219,19 @@ initial begin
     pd_addr  = 16'h0000;
     pd_wdata = 32'hDEADBEEF;
     pd_we    = 1;
+    #1;
     @(posedge clk);
+    #1;
     pd_we    = 0;
 
     @(posedge clk);
+    #1;
     pd_re    = 1;
+    #1;
     @(posedge clk);
+    #1;
     pd_re    = 0;
-    repeat(3) @(posedge clk);
+    repeat(5) @(posedge clk);
 
     if (pd_rdata == 32'hDEADBEEF)
         $display("PASS: Process data write/read (0xDEADBEEF)");
@@ -238,11 +243,13 @@ initial begin
     pd_addr  = 16'h0004;
     pd_wdata = 32'hCAFEBABE;
     pd_we    = 1;
+    #1;  // avoid race with clock edge
     @(posedge clk);
+    #1;
     pd_we    = 0;
-    @(posedge clk);
+    repeat(3) @(posedge clk);  // wait for write to settle
     pd_re    = 1;
-    @(posedge clk);
+    repeat(4) @(posedge clk);  // hold re high — SRAM needs 2 cycles
     pd_re    = 0;
     repeat(3) @(posedge clk);
 
