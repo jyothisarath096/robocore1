@@ -146,8 +146,8 @@ reg [511:0] txf_data  [0:FIFO_DEPTH-1];
 
 reg [2:0]   tx_wr_ptr;
 reg [2:0]   tx_rd_ptr;
-reg [3:0]   tx_count;
-
+// tx_count derived from pointers — no register, no multiple driver
+wire [3:0] tx_count = tx_wr_ptr - tx_rd_ptr;
 wire tx_fifo_full  = (tx_count == FIFO_DEPTH);
 wire tx_fifo_empty = (tx_count == 0);
 assign tx_ready = !tx_fifo_full;
@@ -156,7 +156,6 @@ assign tx_ready = !tx_fifo_full;
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         tx_wr_ptr <= 0;
-        tx_count  <= 0;
     end else if (tx_valid && !tx_fifo_full) begin
         txf_id  [tx_wr_ptr] <= tx_id;
         txf_ide [tx_wr_ptr] <= tx_ide;
@@ -166,7 +165,6 @@ always @(posedge clk or negedge rst_n) begin
         txf_dlc [tx_wr_ptr] <= tx_dlc;
         txf_data[tx_wr_ptr] <= tx_data;
         tx_wr_ptr <= tx_wr_ptr + 1;
-        tx_count  <= tx_count + 1;
     end
 end
 
@@ -183,8 +181,8 @@ reg [511:0] rxf_data  [0:FIFO_DEPTH-1];
 
 reg [2:0]   rx_wr_ptr;
 reg [2:0]   rx_rd_ptr;
-reg [3:0]   rx_count;
-
+// rx_count derived from pointers — no register, no multiple driver
+wire [3:0] rx_count = rx_wr_ptr - rx_rd_ptr;
 wire rx_fifo_full  = (rx_count == FIFO_DEPTH);
 wire rx_fifo_empty = (rx_count == 0);
 
@@ -193,7 +191,6 @@ always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         rx_rd_ptr <= 0;
         rx_valid  <= 0;
-        rx_count  <= 0;
     end else begin
         if (!rx_fifo_empty) begin
             rx_id    <= rxf_id  [rx_rd_ptr];
@@ -206,13 +203,13 @@ always @(posedge clk or negedge rst_n) begin
             rx_valid <= 1;
             if (rx_ack) begin
                 rx_rd_ptr <= rx_rd_ptr + 1;
-                rx_count  <= rx_count - 1;
             end
         end else begin
             rx_valid <= 0;
         end
     end
 end
+
 
 // ============================================================
 // Bit timing engine
@@ -413,7 +410,6 @@ always @(posedge clk or negedge rst_n) begin
                         cur_data <= txf_data[tx_rd_ptr];
                         data_bytes <= dlc_to_bytes(txf_dlc[tx_rd_ptr]);
                         tx_rd_ptr  <= tx_rd_ptr + 1;
-                        tx_count   <= tx_count - 1;
                         state      <= ST_TX_ARB;
                         can_tx     <= 0;  // SOF — dominant
                     end else if (!can_rx_r2) begin
@@ -639,7 +635,6 @@ always @(posedge clk or negedge rst_n) begin
                                     rxf_dlc [rx_wr_ptr] <= cur_dlc;
                                     rxf_data[rx_wr_ptr] <= cur_data;
                                     rx_wr_ptr <= rx_wr_ptr + 1;
-                                    rx_count  <= rx_count + 1;
                                 end
                                 // Good frame — reduce RX error count
                                 if (rx_err_cnt > 0)
