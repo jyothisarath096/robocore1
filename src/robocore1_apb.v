@@ -73,13 +73,13 @@ module robocore1_apb #(
     // --------------------------------------------------------
     // PID Controller
     // --------------------------------------------------------
-    output reg  [31:0]  pid_target  [0:7],
-    output reg  [15:0]  pid_kp      [0:7],
-    output reg  [15:0]  pid_ki      [0:7],
-    output reg  [15:0]  pid_kd      [0:7],
-    output reg  [15:0]  pid_out_max [0:7],
+    output reg  [255:0] pid_target_flat,   // 8x32 flattened
+    output reg  [127:0] pid_kp_flat,       // 8x16 flattened
+    output reg  [127:0] pid_ki_flat,        // 8x16 flattened
+    output reg  [127:0] pid_kd_flat,        // 8x16 flattened
+    output reg  [127:0] pid_out_max_flat,   // 8x16 flattened
     output reg  [7:0]   pid_enable,
-    input  wire [15:0]  pid_out     [0:7],
+    input  wire [127:0] pid_out_flat,       // 8x16 flattened
     input  wire [7:0]   pid_at_target,
     input  wire [7:0]   pid_saturated,
 
@@ -175,13 +175,9 @@ always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         irq_pending <= 0;
         irq_active  <= 0;
-        irq_mask    <= 16'hFFFF;  // all masked at reset
-        irq_clear   <= 0;
     end else begin
-        // Latch and clear in single assignment — no race condition
+        // Latch and clear — irq_clear owned by APB write block
         irq_pending <= (irq_pending | irq_in) & ~irq_clear;
-        irq_clear   <= 0;
-
         // Active = pending and not masked
         irq_active  <= (irq_pending | irq_in) & ~irq_mask;
     end
@@ -217,6 +213,7 @@ always @(posedge clk or negedge rst_n) begin
         wd_enable    <= 4'h0;
         fault_clear  <= 0;
         can_tx_valid <= 0;
+        can_tx_data  <= 0;
         can_rx_ack   <= 0;
         ec_pd_we     <= 0;
         ec_pd_re     <= 0;
@@ -227,11 +224,11 @@ always @(posedge clk or negedge rst_n) begin
         begin : pid_reset
             integer p;
             for (p = 0; p < 8; p = p + 1) begin
-                pid_target[p]  <= 32'd0;
-                pid_kp[p]      <= 16'd10;
-                pid_ki[p]      <= 16'd1;
-                pid_kd[p]      <= 16'd5;
-                pid_out_max[p] <= 16'd1000;
+                pid_target_flat[p*32 +: 32]  <= 32'd0;
+                pid_kp_flat[p*16 +: 16]      <= 16'd10;
+                pid_ki_flat[p*16 +: 16]      <= 16'd1;
+                pid_kd_flat[p*16 +: 16]      <= 16'd5;
+                pid_out_max_flat[p*16 +: 16] <= 16'd1000;
             end
         end
 
@@ -347,16 +344,16 @@ always @(posedge clk or negedge rst_n) begin
                         end else begin
                             if (pwrite) begin
                                 case (off)
-                                    5'h00: pid_target[ch]  <= pwdata;
-                                    5'h04: pid_kp[ch]      <= pwdata[15:0];
-                                    5'h08: pid_ki[ch]      <= pwdata[15:0];
-                                    5'h0C: pid_kd[ch]      <= pwdata[15:0];
-                                    5'h10: pid_out_max[ch] <= pwdata[15:0];
+                                    5'h00: pid_target_flat[ch*32 +: 32]  <= pwdata;
+                                    5'h04: pid_kp_flat[ch*16 +: 16]      <= pwdata[15:0];
+                                    5'h08: pid_ki_flat[ch*16 +: 16]      <= pwdata[15:0];
+                                    5'h0C: pid_kd_flat[ch*16 +: 16]      <= pwdata[15:0];
+                                    5'h10: pid_out_max_flat[ch*16 +: 16] <= pwdata[15:0];
                                     default: pslverr <= 1;
                                 endcase
                             end else begin
                                 case (off)
-                                    5'h14: prdata <= {16'h0, pid_out[ch]};
+                                    5'h14: prdata <= {16'h0, pid_out_flat[ch*16 +: 16]};
                                     5'h18: prdata <= {22'h0,
                                                       pid_saturated[ch],
                                                       pid_at_target[ch],

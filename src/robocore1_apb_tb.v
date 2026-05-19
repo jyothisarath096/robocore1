@@ -55,13 +55,13 @@ reg  [15:0] enc_direction;
 reg  [15:0] enc_idx_flag;
 reg  [15:0] enc_error_flag;
 
-wire [31:0] pid_target  [0:7];
-wire [15:0] pid_kp      [0:7];
-wire [15:0] pid_ki      [0:7];
-wire [15:0] pid_kd      [0:7];
-wire [15:0] pid_out_max [0:7];
+wire [255:0] pid_target_flat;
+wire [127:0] pid_kp_flat;
+wire [127:0] pid_ki_flat;
+wire [127:0] pid_kd_flat;
+wire [127:0] pid_out_max_flat;
 wire [7:0]  pid_enable;
-reg  [15:0] pid_out     [0:7];
+reg  [127:0] pid_out_flat;
 reg  [7:0]  pid_at_target;
 reg  [7:0]  pid_saturated;
 
@@ -133,13 +133,13 @@ robocore1_apb #(
     .enc_direction  (enc_direction),
     .enc_idx_flag   (enc_idx_flag),
     .enc_error_flag (enc_error_flag),
-    .pid_target     (pid_target),
-    .pid_kp         (pid_kp),
-    .pid_ki         (pid_ki),
-    .pid_kd         (pid_kd),
-    .pid_out_max    (pid_out_max),
+    .pid_target_flat  (pid_target_flat),
+    .pid_kp_flat      (pid_kp_flat),
+    .pid_ki_flat      (pid_ki_flat),
+    .pid_kd_flat      (pid_kd_flat),
+    .pid_out_max_flat (pid_out_max_flat),
     .pid_enable     (pid_enable),
-    .pid_out        (pid_out),
+    .pid_out_flat     (pid_out_flat),
     .pid_at_target  (pid_at_target),
     .pid_saturated  (pid_saturated),
     .wd_pet         (wd_pet),
@@ -262,11 +262,9 @@ initial begin
     ec_wkc       = 16'd42;
     irq_in       = 16'h0;
 
-    for (ch = 0; ch < 8; ch = ch + 1) begin
-        pid_out[ch]       = 16'd500;
-        pid_at_target[ch] = 0;
-        pid_saturated[ch] = 0;
-    end
+    pid_out_flat  = 0;
+    for (ch = 0; ch < 8; ch = ch + 1)
+        pid_out_flat[ch*16 +: 16] = 16'd500;
     pid_at_target = 8'h0;
     pid_saturated = 8'h0;
 
@@ -350,14 +348,14 @@ initial begin
     apb_write(32'h0002_0008, 32'd2);      // Ki = 2
     apb_write(32'h0002_000C, 32'd10);     // Kd = 10
     repeat(5) @(posedge clk);
-    if (pid_target[0] == 32'd2000)
+    if (pid_target_flat[0*32 +: 32] == 32'd2000)
         $display("PASS: PID target[0] = 2000");
     else
-        $display("FAIL: PID target wrong: %0d", pid_target[0]);
-    if (pid_kp[0] == 16'd20)
+        $display("FAIL: PID target wrong: %0d", pid_target_flat[0*32 +: 32]);
+    if (pid_kp_flat[0*16 +: 16] == 16'd20)
         $display("PASS: PID Kp[0] = 20");
     else
-        $display("FAIL: PID Kp wrong: %0d", pid_kp[0]);
+        $display("FAIL: PID Kp wrong: %0d", pid_kp_flat[0*16 +: 16]);
 
     // --------------------------------------------------------
     // Test 6 — Safety register read
