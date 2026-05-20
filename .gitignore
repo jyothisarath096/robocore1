@@ -1,27 +1,9 @@
-# Simulation binaries
-pwm_sim
-enc_sim
-pid_sim
-safety_sim
-
-# Waveform dumps
+# Simulation artifacts
+*_sim
 *.vcd
 
-# OpenLane run outputs
+# Fix scripts
+fix_*.sh
+
+# OpenLane runs
 runs/
-
-# Python cache
-__pycache__/
-*.pyc
-
-# Mac junk
-.DS_Store
-tick_sim
-apb_sim
-can_sim
-ethercat_sim
-fix_irq.sh
-top_sim
-fix_top.sh
-fix_pid_test.sh
-*.gds # GDS files are binary and large

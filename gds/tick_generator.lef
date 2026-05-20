@@ -1,0 +1,128 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO tick_generator
+  CLASS BLOCK ;
+  FOREIGN tick_generator ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 200.000 BY 200.000 ;
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 28.940 10.640 30.540 187.920 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 182.540 10.640 184.140 187.920 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 9.880 30.030 190.220 31.630 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 9.880 183.210 190.220 184.810 ;
+    END
+  END VGND
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 25.640 10.640 27.240 187.920 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 179.240 10.640 180.840 187.920 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 9.880 26.730 190.220 28.330 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 9.880 179.910 190.220 181.510 ;
+    END
+  END VPWR
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.852000 ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 136.040 4.000 136.640 ;
+    END
+  END clk
+  PIN rst_n
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
+    PORT
+      LAYER met2 ;
+        RECT 128.890 0.000 129.170 4.000 ;
+    END
+  END rst_n
+  PIN tick_100khz
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.795200 ;
+    PORT
+      LAYER met2 ;
+        RECT 0.090 0.000 0.370 4.000 ;
+    END
+  END tick_100khz
+  PIN tick_10mhz
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.795200 ;
+    PORT
+      LAYER met2 ;
+        RECT 67.710 196.000 67.990 200.000 ;
+    END
+  END tick_10mhz
+  PIN tick_1khz
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.795200 ;
+    PORT
+      LAYER met2 ;
+        RECT 196.510 196.000 196.790 200.000 ;
+    END
+  END tick_1khz
+  PIN tick_1mhz
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.795200 ;
+    PORT
+      LAYER met3 ;
+        RECT 196.000 61.240 200.000 61.840 ;
+    END
+  END tick_1mhz
+  OBS
+      LAYER li1 ;
+        RECT 10.120 10.795 189.980 187.765 ;
+      LAYER met1 ;
+        RECT 0.070 10.640 196.810 187.920 ;
+      LAYER met2 ;
+        RECT 0.100 195.720 67.430 196.000 ;
+        RECT 68.270 195.720 196.230 196.000 ;
+        RECT 0.100 4.280 196.780 195.720 ;
+        RECT 0.650 4.000 128.610 4.280 ;
+        RECT 129.450 4.000 196.780 4.280 ;
+      LAYER met3 ;
+        RECT 4.000 137.040 196.000 187.845 ;
+        RECT 4.400 135.640 196.000 137.040 ;
+        RECT 4.000 62.240 196.000 135.640 ;
+        RECT 4.000 60.840 195.600 62.240 ;
+        RECT 4.000 10.715 196.000 60.840 ;
+      LAYER met4 ;
+        RECT 20.535 38.935 25.240 152.145 ;
+        RECT 27.640 38.935 28.540 152.145 ;
+        RECT 30.940 38.935 108.265 152.145 ;
+  END
+END tick_generator
+END LIBRARY
+
