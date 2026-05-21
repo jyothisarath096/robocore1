@@ -129,14 +129,14 @@ wire [15:0]  enc_error_flag;
 // ============================================================
 // Internal wires — PID Controller
 // ============================================================
-wire [31:0]  pid_target  [0:7];
-wire [15:0]  pid_kp      [0:7];
-wire [15:0]  pid_ki      [0:7];
-wire [15:0]  pid_kd      [0:7];
-wire [15:0]  pid_out_max [0:7];
+wire [255:0] pid_target_flat;
+wire [127:0] pid_kp_flat;
+wire [127:0] pid_ki_flat;
+wire [127:0] pid_kd_flat;
+wire [127:0] pid_out_max_flat;
 wire [47:0]  pid_int_limit = 48'd100000; // fixed anti-windup limit
-wire [31:0]  pid_actual   [0:7];        // actual positions for PID
-wire [47:0]  pid_int_limit_arr [0:7];   // per-channel int limit array
+wire [255:0] pid_actual_flat;           // 8x32 actual positions for PID
+wire [383:0] pid_int_limit_flat;        // 8x48 per-channel int limit
 
 // Connect encoder position to all PID channels
 // In full system, each channel reads its own encoder
@@ -144,12 +144,12 @@ wire [47:0]  pid_int_limit_arr [0:7];   // per-channel int limit array
 genvar pa;
 generate
     for (pa = 0; pa < 8; pa = pa + 1) begin : pid_actual_connect
-        assign pid_actual[pa]        = enc_reg_rdata;
-        assign pid_int_limit_arr[pa] = pid_int_limit;
+        assign pid_actual_flat[pa*32 +: 32] = enc_reg_rdata;
+        assign pid_int_limit_flat[pa*48 +: 48] = pid_int_limit;
     end
 endgenerate
 wire [7:0]   pid_enable;
-wire [15:0]  pid_out     [0:7];
+wire [127:0] pid_out_flat;
 wire [7:0]   pid_at_target;
 wire [7:0]   pid_saturated;
 
@@ -159,7 +159,7 @@ wire [7:0]   pid_saturated;
 wire [3:0]   wd_pet;
 wire [3:0]   wd_enable;
 wire [23:0]  wd_timeout_val = 24'd10_000_000; // 100ms at 100MHz
-wire [23:0]  wd_timeout  [0:3];
+wire [95:0]  wd_timeout_flat;
 wire [31:0]  fault_reg;
 wire         fault_clear;
 wire         safe_state_int;
@@ -170,10 +170,10 @@ wire         system_fault;
 wire [3:0]   wd_expired;
 
 // Broadcast same timeout to all watchdogs
-assign wd_timeout[0] = wd_timeout_val;
-assign wd_timeout[1] = wd_timeout_val;
-assign wd_timeout[2] = wd_timeout_val;
-assign wd_timeout[3] = wd_timeout_val;
+assign wd_timeout_flat[0*24 +: 24] = wd_timeout_val;
+assign wd_timeout_flat[1*24 +: 24] = wd_timeout_val;
+assign wd_timeout_flat[2*24 +: 24] = wd_timeout_val;
+assign wd_timeout_flat[3*24 +: 24] = wd_timeout_val;
 
 // ============================================================
 // Internal wires — CAN FD
@@ -365,15 +365,15 @@ pid_controller #(
     .clk        (clk),
     .rst_n      (rst_n),
     .tick_1mhz  (tick_10mhz),
-    .target     (pid_target),
-    .actual     (pid_actual),
-    .kp         (pid_kp),
-    .ki         (pid_ki),
-    .kd         (pid_kd),
-    .out_max    (pid_out_max),
+    .target_flat (pid_target_flat),
+    .actual_flat(pid_actual_flat),
+    .kp_flat     (pid_kp_flat),
+    .ki_flat     (pid_ki_flat),
+    .kd_flat     (pid_kd_flat),
+    .out_max_flat(pid_out_max_flat),
     .enable     (pid_enable),
-    .int_limit  (pid_int_limit_arr),
-    .pid_out    (pid_out),
+    .int_limit_flat(pid_int_limit_flat),
+    .pid_out_flat(pid_out_flat),
     .at_target  (pid_at_target),
     .saturated  (pid_saturated)
 );
@@ -390,7 +390,7 @@ safety_subsystem #(
     .clk            (clk),
     .rst_n          (rst_n),
     .wd_pet         (wd_pet),
-    .wd_timeout     (wd_timeout),
+    .wd_timeout_flat(wd_timeout_flat),
     .wd_enable      (wd_enable),
     .estop_n        (estop_n),
     .brownout_n     (brownout_n),
@@ -520,13 +520,13 @@ robocore1_apb #(
     .enc_direction  (enc_direction),
     .enc_idx_flag   (enc_idx_flag),
     .enc_error_flag (enc_error_flag),
-    .pid_target     (pid_target),
-    .pid_kp         (pid_kp),
-    .pid_ki         (pid_ki),
-    .pid_kd         (pid_kd),
-    .pid_out_max    (pid_out_max),
+    .pid_target_flat  (pid_target_flat),
+    .pid_kp_flat      (pid_kp_flat),
+    .pid_ki_flat      (pid_ki_flat),
+    .pid_kd_flat      (pid_kd_flat),
+    .pid_out_max_flat (pid_out_max_flat),
     .pid_enable     (pid_enable),
-    .pid_out        (pid_out),
+    .pid_out_flat     (pid_out_flat),
     .pid_at_target  (pid_at_target),
     .pid_saturated  (pid_saturated),
     .wd_pet         (wd_pet),
