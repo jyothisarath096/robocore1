@@ -424,7 +424,59 @@ integer ri;
 initial begin
     for (ri = 0; ri < 256; ri = ri + 1)
         boot_rom[ri] = 32'h0000_0013; // NOP
-    boot_rom[0] = 32'h0000_006F;      // jal x0, 0 (infinite loop)
+    // RoboCore-1 Boot Firmware v1.0
+    // Init: stack, chip ID check, safety WD, PWM, PID, DMA, jump to 0x10000
+    boot_rom[  0] = 32'h00001137; // lui  sp, 1        (sp=0x1000)
+    boot_rom[  1] = 32'h00070537; // lui  a0, 0x70     (SYS base)
+    boot_rom[  2] = 32'h00052583; // lw   a1, 0(a0)    (read CHIP_ID)
+    boot_rom[  3] = 32'hAC010637; // lui  a2, 0xAC010
+    boot_rom[  4] = 32'h00260613; // addi a2, a2, 2    (a2=0xAC010002)
+    boot_rom[  5] = 32'h0AC59063; // bne  a1, a2, halt (wrong chip)
+    boot_rom[  6] = 32'hB00706B7; // lui  a3, 0xB0070  (BOOTING marker)
+    boot_rom[  7] = 32'h00D52423; // sw   a3, 8(a0)    (sys_scratch=BOOTING)
+    boot_rom[  8] = 32'h00030537; // lui  a0, 0x30     (SAFETY base)
+    boot_rom[  9] = 32'h00F00593; // addi a1, x0, 0xF  (all 4 WDs)
+    boot_rom[ 10] = 32'h00B52823; // sw   a1, 0x10(a0) (wd_enable)
+    boot_rom[ 11] = 32'h00B52623; // sw   a1, 0x0C(a0) (wd_pet)
+    boot_rom[ 12] = 32'h00000537; // lui  a0, 0        (PWM base)
+    boot_rom[ 13] = 32'h00000293; // addi t0, x0, 0    (ch=0)
+    boot_rom[ 14] = 32'h01000313; // addi t1, x0, 16   (16 channels)
+    boot_rom[ 15] = 32'h00552023; // sw   t0, 0(a0)    (select ch)
+    boot_rom[ 16] = 32'h7D000393; // addi t2, x0, 0x7D0 (period=2000)
+    boot_rom[ 17] = 32'h00752223; // sw   t2, 4(a0)    (set period)
+    boot_rom[ 18] = 32'h00052423; // sw   x0, 8(a0)    (duty_h=0)
+    boot_rom[ 19] = 32'h00052623; // sw   x0, 12(a0)   (duty_l=0)
+    boot_rom[ 20] = 32'h00128293; // addi t0, t0, 1
+    boot_rom[ 21] = 32'hFE62C4E3; // blt  t0, t1, -24  (pwm_loop)
+    boot_rom[ 22] = 32'h00020537; // lui  a0, 0x20     (PID base)
+    boot_rom[ 23] = 32'h10052023; // sw   x0, 0x100(a0) (pid_enable=0)
+    boot_rom[ 24] = 32'h000F0537; // lui  a0, 0xF0     (DMA base)
+    boot_rom[ 25] = 32'h000605B7; // lui  a1, 0x60     (EC PD base)
+    boot_rom[ 26] = 32'h01458593; // addi a1, a1, 0x14 (ec_pd_rdata)
+    boot_rom[ 27] = 32'h00B52023; // sw   a1, 0(a0)    (desc src)
+    boot_rom[ 28] = 32'h000705B7; // lui  a1, 0x70     (SYS base)
+    boot_rom[ 29] = 32'h00858593; // addi a1, a1, 8    (sys_scratch)
+    boot_rom[ 30] = 32'h00B52223; // sw   a1, 4(a0)    (desc dst)
+    boot_rom[ 31] = 32'h0000C5B7; // lui  a1, 0xC      (0xC000)
+    boot_rom[ 32] = 32'h10158593; // addi a1, a1, 0x101 (ctrl=0xC101)
+    boot_rom[ 33] = 32'h00B52423; // sw   a1, 8(a0)    (desc ctrl)
+    boot_rom[ 34] = 32'h00052623; // sw   x0, 12(a0)   (reserved)
+    boot_rom[ 35] = 32'h000F1537; // lui  a0, 0xF1     (DMA ctrl base)
+    boot_rom[ 36] = 32'h80050513; // addi a0, a0, -0x800 (0xF0800)
+    boot_rom[ 37] = 32'h00100593; // addi a1, x0, 1    (enable=1)
+    boot_rom[ 38] = 32'h00B52023; // sw   a1, 0(a0)    (DMA CH0 enable)
+    boot_rom[ 39] = 32'h00070537; // lui  a0, 0x70     (SYS base)
+    boot_rom[ 40] = 32'h600DB5B7; // lui  a1, 0x600DB  (GOOD_BOOT hi)
+    boot_rom[ 41] = 32'h00758593; // addi a1, a1, 7    (0x600DB007)
+    boot_rom[ 42] = 32'h00B52423; // sw   a1, 8(a0)    (sys_scratch=GOOD)
+    boot_rom[ 43] = 32'h00010537; // lui  a0, 0x10     (user fw base)
+    boot_rom[ 44] = 32'h00050067; // jalr x0, 0(a0)    (jump to user fw)
+    // halt (chip ID mismatch)
+    boot_rom[ 45] = 32'h00070537; // lui  a0, 0x70
+    boot_rom[ 46] = 32'hDEAD05B7; // lui  a1, 0xDEAD0  (DEAD marker)
+    boot_rom[ 47] = 32'h00058593; // addi a1, a1, 0
+    boot_rom[ 48] = 32'h00B52423; // sw   a1, 8(a0)    (sys_scratch=DEAD)
+    boot_rom[ 49] = 32'h0000006F; // jal  x0, 0        (dead loop)
 end
 
 wire        rom_sel     = (cpu_araddr[31:10] == 22'h0);
