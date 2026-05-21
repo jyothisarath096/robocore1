@@ -7,3 +7,6 @@ fix_*.sh
 
 # OpenLane runs
 runs/
+.DS_Store
+*.vcd
+*_sim
