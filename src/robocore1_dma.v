@@ -17,7 +17,7 @@
 
 module robocore1_dma #(
     parameter NUM_CHANNELS = 8,
-    parameter DESC_DEPTH   = 16
+    parameter DESC_DEPTH   = 4
 )(
     input  wire        clk, rst_n,
 
