@@ -84,3 +84,12 @@ module sram_wrapper (
         tx_dout <= tx_mem[tx_addr];
     end
 endmodule
+
+// SKY130 clock gate stub for simulation
+module sky130_fd_sc_hd__dlclkp_1 (
+    input  CLK,
+    input  GATE,
+    output GCLK
+);
+    assign GCLK = CLK; // simulation: always pass clock through
+endmodule
