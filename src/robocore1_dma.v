@@ -150,6 +150,11 @@ always @(posedge clk or negedge rst_n) begin
         m_araddr  <= 0;
         irq_complete <= 0; irq_chain <= 0; irq_error <= 0;
         ch_enabled   <= 0;
+        begin : ch_desc_reset
+            integer rd_i;
+            for (rd_i = 0; rd_i < NUM_CHANNELS; rd_i = rd_i + 1)
+                ch_desc[rd_i] <= 0;
+        end
     end else begin
         irq_complete <= 0;
         irq_chain    <= 0;
@@ -303,8 +308,6 @@ always @(posedge clk or negedge rst_n) begin
         cfg_arready <= 1; cfg_rvalid <= 0;
         cfg_bresp   <= 0; cfg_rresp  <= 0; cfg_rdata  <= 0;
         ch_sw_trig  <= 0;
-        for (ci = 0; ci < NUM_CHANNELS; ci = ci + 1)
-            ch_desc[ci] <= 0;
     end else begin
         cfg_bvalid <= 0;
         cfg_rvalid <= 0;
