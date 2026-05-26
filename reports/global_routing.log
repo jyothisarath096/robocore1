@@ -1,0 +1,97 @@
+OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/robocore1/runs/RUN_2026.05.26_11.50.23/tmp/cts/15-robocore1_top.resized.odb'…
+define_corners Typical
+read_liberty -corner Typical /root/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/robocore1/runs/RUN_2026.05.26_11.50.23/tmp/cts/15-robocore1_top.resized.sdc'…
+[INFO]: Setting signal min routing layer to: met1 and clock min routing layer to met3. 
+[INFO]: Setting signal max routing layer to: met5 and clock max routing layer to met5. 
+-congestion_iterations 50 -verbose -congestion_report_file /openlane/designs/robocore1/runs/RUN_2026.05.26_11.50.23/tmp/routing/groute-congestion.rpt
+[INFO GRT-0020] Min routing layer: met1
+[INFO GRT-0021] Max routing layer: met5
+[INFO GRT-0022] Global adjustment: 15%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0019] Found 7967 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 91
+[INFO GRT-0003] Macros: 1
+[INFO GRT-0004] Blockages: 361618
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+li1        Vertical            0             0          0.00%
+met1       Horizontal   15103220       7953029          47.34%
+met2       Vertical     11327415       8042632          29.00%
+met3       Horizontal    7551610       5360208          29.02%
+met4       Vertical      4530966       3119982          31.14%
+met5       Horizontal    1510322        645180          57.28%
+---------------------------------------------------------------
+
+[INFO GRT-0101] Running extra iterations to remove overflow.
+[INFO GRT-0103] Extra Run for hard benchmark.
+/opt/rh/devtoolset-8/root/usr/include/c++/8/bits/stl_vector.h:932: std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::operator[](std::vector<_Tp, _Alloc>::size_type) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::reference = int&; std::vector<_Tp, _Alloc>::size_type = long unsigned int]: Assertion '__builtin_expect(__n < this->size(), true)' failed.
+Signal 6 received
+Stack trace:
+ 0# 0x0000000000D429A7 in openroad
+ 1# 0x00007994F2746400 in /lib64/libc.so.6
+ 2# gsignal in /lib64/libc.so.6
+ 3# abort in /lib64/libc.so.6
+ 4# 0x0000000000D42A82 in openroad
+ 5# 0x00000000028C9072 in openroad
+ 6# grt::FastRouteCore::updateRouteType1(int, grt::TreeNode const*, int, int, int, int, int, grt::TreeEdge*, int, int) in openroad
+ 7# grt::FastRouteCore::mazeRouteMSMD(int, int, float, int, int, bool, int, float, int, int, int) in openroad
+ 8# grt::FastRouteCore::run() in openroad
+ 9# grt::GlobalRouter::findRouting(std::vector<grt::Net*, std::allocator<grt::Net*> >&, int, int) in openroad
+10# grt::GlobalRouter::globalRoute(bool, bool, bool) in openroad
+11# 0x000000000124AC50 in openroad
+12# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+13# 0x00007994F72BF36C in /lib64/libtcl8.5.so
+14# TclObjInterpProcCore in /lib64/libtcl8.5.so
+15# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+16# 0x00007994F72BF36C in /lib64/libtcl8.5.so
+17# 0x00007994F72C7647 in /lib64/libtcl8.5.so
+18# TclEvalObjEx in /lib64/libtcl8.5.so
+19# 0x00007994F730227F in /lib64/libtcl8.5.so
+20# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+21# 0x00007994F72BF36C in /lib64/libtcl8.5.so
+22# 0x00007994F72C7647 in /lib64/libtcl8.5.so
+23# TclEvalObjEx in /lib64/libtcl8.5.so
+24# 0x00007994F72821D0 in /lib64/libtcl8.5.so
+25# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+26# 0x00007994F72BF36C in /lib64/libtcl8.5.so
+27# 0x00007994F72C7647 in /lib64/libtcl8.5.so
+28# TclEvalObjEx in /lib64/libtcl8.5.so
+29# 0x00007994F7285F00 in /lib64/libtcl8.5.so
+30# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+31# 0x00007994F72BF36C in /lib64/libtcl8.5.so
+32# TclObjInterpProcCore in /lib64/libtcl8.5.so
+33# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+34# 0x00007994F72BF36C in /lib64/libtcl8.5.so
+35# TclObjInterpProcCore in /lib64/libtcl8.5.so
+36# 0x00007994F727AEB2 in /lib64/libtcl8.5.so
+37# 0x00007994F727BF1E in /lib64/libtcl8.5.so
+38# Tcl_EvalEx in /lib64/libtcl8.5.so
+39# Tcl_Eval in /lib64/libtcl8.5.so
+40# sta::sourceTclFile(char const*, bool, bool, Tcl_Interp*) in openroad
+41# ord::tclAppInit(Tcl_Interp*) in openroad
+42# Tcl_Main in /lib64/libtcl8.5.so
+43# main in openroad
+44# __libc_start_main in /lib64/libc.so.6
+45# 0x0000000000D3C6C7 in openroad
