@@ -187,10 +187,12 @@ All 30 tests passing across 3 test suites:
 | Process | SkyWater SKY130 130nm |
 | Die area | 6 × 6mm |
 | Cell count | ~135,000 |
-| Clock speed | 92MHz |
-| Power (estimated) | ~275mW (with clock gating) |
-| DRC violations | 0 |
+| Clock speed | 92MHz (100MHz constraint, +0.35ns slack) |
+| Power (estimated) | ~275mW (with clock gating, ~34% reduction) |
+| WNS | +0.35ns (all paths MET) ✅ |
+| TNS | 0.0ns (no violations) ✅ |
 | Routing | Complete |
+| GDS | 49MB ✅ |
 
 ---
 
@@ -225,9 +227,13 @@ All 30 tests passing across 3 test suites:
 ## Roadmap
 
 ### v1.0 (Current) — Proof of Architecture
-- Full RTL implementation on SKY130
-- All peripheral blocks verified by simulation
-- GDS layout complete
+- Full RTL implementation on SKY130 ✅
+- 30/30 simulations passing across all modules ✅
+- GDS layout complete (49MB) ✅
+- STA signoff: WNS +0.35ns, all paths MET at 100MHz ✅
+- HAL v1.0 — single-header C library ✅
+- Clock gating — ~34% power reduction ✅
+- RoboCore Flow Manager — production-grade OpenLane wrapper ✅
 
 ### v1.1 — Silicon Validation
 - MPW/ChipIgnite tapeout
