@@ -436,7 +436,7 @@ assign dma_cfg_rready  = cpu_rready && dma_cfg_sel_r;
 // ============================================================
 // Boot ROM — 1KB at 0x0000_0000
 // ============================================================
-reg [31:0] boot_rom [0:255];
+(* ram_style = "block" *) reg [31:0] boot_rom [0:255];
 integer ri;
 initial begin
     for (ri = 0; ri < 256; ri = ri + 1)

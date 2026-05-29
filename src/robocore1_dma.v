@@ -75,7 +75,7 @@ end
 // ============================================================
 // Descriptor RAM — flat array: index = ch*64 + desc*4 + word
 // ============================================================
-reg [31:0] desc_ram [0:511]; // 8*16*4 = 512 entries
+(* ram_style = "block" *) reg [31:0] desc_ram [0:511]; // 8*16*4 = 512 entries
 integer di;
 initial for (di = 0; di < 512; di = di + 1) desc_ram[di] = 0;
 
@@ -96,7 +96,7 @@ for (gi = 0; gi < NUM_CHANNELS; gi = gi + 1) begin : trig_gen
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             ch_pending[gi] <= 0;
-            ch_sw_trig[gi] <= 0;
+            // ch_sw_trig owned by config slave
         end else if (ch_enabled[gi] && !ch_pending[gi]) begin
             case (desc_ram[gi*64 + ch_desc[gi]*4 + 2][10:8])
                 3'd0: if (ch_sw_trig[gi]) begin ch_pending[gi]<=1; ch_sw_trig[gi]<=0; end
