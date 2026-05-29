@@ -121,6 +121,41 @@ def check_array_ports(verilog_file):
         pass
     return issues
 
+# ── Auto Fix ──────────────────────────────────────────────────────────────────
+
+def fix_large_arrays(verilog_file):
+    """Add ram_style=block attribute to large arrays."""
+    import re
+    fixes = 0
+    with open(verilog_file) as f:
+        lines = f.readlines()
+    
+    new_lines = []
+    for i, line in enumerate(lines):
+        # Check if this is a large array declaration
+        if line.strip().startswith("reg") and not "(* ram_style" in line:
+            dims = re.findall(r'\[(\d+):(\d+)\]', line)
+            if len(dims) >= 2:
+                width = abs(int(dims[0][0]) - int(dims[0][1])) + 1
+                depth = abs(int(dims[1][0]) - int(dims[1][1])) + 1
+                if width * depth > 4096:
+                    # Add ram_style attribute
+                    indent = len(line) - len(line.lstrip())
+                    line = " " * indent + '(* ram_style = "block" *) ' + line.lstrip()
+                    fixes += 1
+        new_lines.append(line)
+    
+    if fixes > 0:
+        with open(verilog_file, 'w') as f:
+            f.writelines(new_lines)
+    return fixes
+
+def fix_multiple_drivers(verilog_file):
+    """Report multiple drivers with line numbers for manual fix."""
+    # Auto-fix is risky — just report with clear guidance
+    issues = check_multiple_drivers(verilog_file)
+    return issues
+
 # ── Run Utilities ──────────────────────────────────────────────────────────
 
 def get_run_dirs(design_dir):
@@ -201,8 +236,9 @@ def init(design, budget, cost_per_hr, github_repo):
 
 @cli.command()
 @click.argument("src_dir")
-def preprocess(src_dir):
-    """Detect common RTL synthesis issues."""
+@click.option("--fix", is_flag=True, help="Auto-fix large arrays with ram_style=block")
+def preprocess(src_dir, fix):
+    """Detect and optionally fix common RTL synthesis issues."""
     console.print(Panel("[bold]RoboCore RTL Preprocessor[/bold]",
                         subtitle="Checking for synthesis issues"))
     vfiles = [f for f in Path(src_dir).glob("**/*.v")
@@ -210,6 +246,19 @@ def preprocess(src_dir):
     if not vfiles:
         console.print(f"[red]No .v files in {src_dir}[/red]")
         return
+
+    # Auto-fix large arrays if requested
+    if fix:
+        total_fixes = 0
+        for vf in vfiles:
+            n = fix_large_arrays(str(vf))
+            if n > 0:
+                console.print(f"[green]Auto-fixed {n} large array(s) in {vf.name}[/green]")
+                total_fixes += n
+        if total_fixes > 0:
+            console.print(f"[green]Applied {total_fixes} ram_style fixes[/green]\n")
+        else:
+            console.print("[green]No large arrays needed fixing[/green]\n")
 
     all_issues = []
     for vf in vfiles:
