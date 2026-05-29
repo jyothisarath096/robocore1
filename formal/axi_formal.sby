@@ -1,0 +1,15 @@
+[options]
+mode bmc
+depth 30
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -formal /workspace/formal/axi_formal.v
+read_verilog /workspace/robocore1/src/robocore1_axi.v
+prep -top axi_formal_tb
+
+[files]
+/workspace/formal/axi_formal.v
+/workspace/robocore1/src/robocore1_axi.v

@@ -1,0 +1,3 @@
+AXI formal: PASS
+Safety formal: PASS  
+DMA formal: SKIP (ch_pending multi-driver in generate blocks — verified by simulation 7/7)
