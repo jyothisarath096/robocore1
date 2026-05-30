@@ -307,8 +307,52 @@ Result: Temporal induction successful —
 
 PASS Time: ~9 seconds
 
-### Suite 2: IEC 61508 SIL2 Safety — *In Progress*
+### Suite 2: IEC 61508 SIL2 Safety ✅ PROVED
 ### Suite 3: DMA Correctness — *Pending*
 ### Suite 4: Cover Completeness — *Pending*
 
 ---
+
+### Suite 2: IEC 61508 SIL2 Safety ✅ PROVED
+
+**Method:** Temporal k-induction, unbounded. `bind`-based white-box. 7 induction invariants + 18 SIL2 properties.
+
+| # | Property | Result |
+|---|---|---|
+| INV1 | estop_r2 == past(estop_r1) | ✅ PROVED |
+| INV2 | brownout_r2 == past(brownout_r1) | ✅ PROVED |
+| INV3 | estop_r1 == past(estop_n) | ✅ PROVED |
+| INV4 | brownout_r1 == past(brownout_n) | ✅ PROVED |
+| INV5 | safe_state == combinatorial definition exactly | ✅ PROVED |
+| INV6 | fault_reg bits only set, never spontaneously clear | ✅ PROVED |
+| INV7 | wd_fault sticky while enabled and not petted | ✅ PROVED |
+| S1 | safe_state == ~estop_r2 \| ~brownout_r2 \| \|wd_fault \| \|fault_in | ✅ PROVED |
+| S2 | ESTOP → safe_state within 2 cycles (double-flop latency) | ✅ PROVED |
+| S3 | safe_state STICKY while estop_n low | ✅ PROVED |
+| S4 | brownout → safe_state within 2 cycles | ✅ PROVED |
+| S5 | any fault_in[i] → safe_state immediately (combinatorial, 0 cycles) | ✅ PROVED |
+| S6 | fault_clear has NO effect while safe_state asserted | ✅ PROVED |
+| S7 | fault_clear has NO effect while estop active | ✅ PROVED |
+| S8 | fault_reg[8] latches estop_active, sticky | ✅ PROVED |
+| S9 | fault_reg[9] latches brownout_active, sticky | ✅ PROVED |
+| S10 | fault_reg[10..12] latch fault_in[0..2], sticky | ✅ PROVED |
+| S11 | wd_fault sticky while enabled and not petted | ✅ PROVED |
+| S12 | watchdog_fault == OR(wd_fault) exactly | ✅ PROVED |
+| S13 | estop_active == ~estop_r2 exactly | ✅ PROVED |
+| S14 | brownout_active == ~brownout_r2 exactly | ✅ PROVED |
+| S15 | estop_r2 == past(estop_r1) — synchronizer chain intact | ✅ PROVED |
+| S16 | estop_r1 == past(estop_n) — synchronizer chain intact | ✅ PROVED |
+| S17 | wd_expired == past(wd_fault) exactly | ✅ PROVED |
+| S18 | safe_state low on reset deassert (clean start) | ✅ PROVED |
+
+Tool: SymbiYosys + Yosys 0.48 + z3 4.13.4 
+
+Method: k-induction PROVE mode (unbounded) 
+
+Result: Temporal induction successful — PASS 
+
+Time: ~1 second
+
+
+### Suite 3: DMA Correctness — *Pending*
+### Suite 4: Cover Completeness — *Pending*
