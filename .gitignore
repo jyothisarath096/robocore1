@@ -10,3 +10,10 @@ runs/
 .DS_Store
 *.vcd
 *_sim
+# SymbiYosys run directories
+formal/prod/axi_proto/
+formal/prod/safety_sil2/
+formal/prod/dma/
+formal/prod/cover_axi/
+formal/prod/cover_safety/
+formal/prod/cover_completeness/

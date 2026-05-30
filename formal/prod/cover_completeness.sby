@@ -1,17 +1,3 @@
-[options]
-mode cover
-depth 60
-
-[engines]
-smtbmc z3
-
-[script]
-read_verilog -formal /workspace/formal/prod/cover_completeness.v
-read_verilog /workspace/src/robocore1_axi.v
-read_verilog /workspace/src/safety_subsystem.v
-prep -top cover_completeness
-
-[files]
-/workspace/formal/prod/cover_completeness.v
-/workspace/src/robocore1_axi.v
-/workspace/src/safety_subsystem.v
+# NOTE: Superseded by cover_axi.sby and cover_safety.sby
+# Run those instead — they use correct DUT instantiation
+# with f_* observation ports for genuine cover reachability.
