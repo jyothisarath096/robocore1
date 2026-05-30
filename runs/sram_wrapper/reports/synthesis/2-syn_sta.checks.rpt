@@ -1,0 +1,322 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= Typical Corner ===================================
+
+Startpoint: pd_sel (input port clocked by clk)
+Endpoint: _161_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          2.00    2.00 ^ input external delay
+                  0.07    0.05    2.05 ^ pd_sel (in)
+     5    0.01                           pd_sel (net)
+                  0.07    0.00    2.05 ^ _092_/A (sky130_fd_sc_hd__buf_1)
+                  0.40    0.35    2.39 ^ _092_/X (sky130_fd_sc_hd__buf_1)
+    10    0.03                           _036_ (net)
+                  0.40    0.00    2.39 ^ _093_/S (sky130_fd_sc_hd__mux2_2)
+                  0.05    0.39    2.79 v _093_/X (sky130_fd_sc_hd__mux2_2)
+     1    0.00                           _037_ (net)
+                  0.05    0.00    2.79 v _094_/A (sky130_fd_sc_hd__buf_1)
+                  0.02    0.09    2.87 v _094_/X (sky130_fd_sc_hd__buf_1)
+     1    0.00                           _011_ (net)
+                  0.02    0.00    2.87 v _161_/D (sky130_fd_sc_hd__dfxtp_2)
+                                  2.87   data arrival time
+
+                  0.15   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                                  9.75 ^ _161_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                         -0.08    9.67   library setup time
+                                  9.67   data required time
+-----------------------------------------------------------------------------
+                                  9.67   data required time
+                                 -2.87   data arrival time
+-----------------------------------------------------------------------------
+                                  6.80   slack (MET)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= Typical Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= Typical Corner ===================================
+
+
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 229 unannotated drivers.
+ clk
+ pd_addr[0]
+ pd_addr[1]
+ pd_addr[2]
+ pd_addr[3]
+ pd_addr[4]
+ pd_addr[5]
+ pd_addr[6]
+ pd_addr[7]
+ pd_addr[8]
+ pd_re
+ pd_sel
+ pd_wdata[0]
+ pd_wdata[10]
+ pd_wdata[11]
+ pd_wdata[12]
+ pd_wdata[13]
+ pd_wdata[14]
+ pd_wdata[15]
+ pd_wdata[16]
+ pd_wdata[17]
+ pd_wdata[18]
+ pd_wdata[19]
+ pd_wdata[1]
+ pd_wdata[20]
+ pd_wdata[21]
+ pd_wdata[22]
+ pd_wdata[23]
+ pd_wdata[24]
+ pd_wdata[25]
+ pd_wdata[26]
+ pd_wdata[27]
+ pd_wdata[28]
+ pd_wdata[29]
+ pd_wdata[2]
+ pd_wdata[30]
+ pd_wdata[31]
+ pd_wdata[3]
+ pd_wdata[4]
+ pd_wdata[5]
+ pd_wdata[6]
+ pd_wdata[7]
+ pd_wdata[8]
+ pd_wdata[9]
+ pd_we
+ rx_addr[0]
+ rx_addr[1]
+ rx_addr[2]
+ rx_addr[3]
+ rx_addr[4]
+ rx_addr[5]
+ rx_addr[6]
+ rx_addr[7]
+ rx_addr[8]
+ rx_addr[9]
+ rx_din[0]
+ rx_din[1]
+ rx_din[2]
+ rx_din[3]
+ rx_din[4]
+ rx_din[5]
+ rx_din[6]
+ rx_din[7]
+ rx_we
+ tx_addr[0]
+ tx_addr[1]
+ tx_addr[2]
+ tx_addr[3]
+ tx_addr[4]
+ tx_addr[5]
+ tx_addr[6]
+ tx_addr[7]
+ tx_addr[8]
+ tx_addr[9]
+ _089_/Y
+ _090_/Y
+ _091_/Y
+ _092_/X
+ _093_/X
+ _094_/X
+ _095_/X
+ _096_/X
+ _097_/X
+ _098_/X
+ _099_/X
+ _100_/X
+ _101_/X
+ _102_/X
+ _103_/X
+ _104_/X
+ _105_/X
+ _106_/X
+ _107_/X
+ _108_/X
+ _109_/X
+ _110_/X
+ _111_/X
+ _112_/X
+ _113_/X
+ _114_/X
+ _115_/X
+ _116_/X
+ _117_/X
+ _118_/X
+ _119_/X
+ _120_/X
+ _121_/X
+ _122_/X
+ _123_/X
+ _124_/X
+ _125_/X
+ _126_/X
+ _127_/X
+ _128_/X
+ _129_/X
+ _130_/X
+ _131_/X
+ _132_/X
+ _133_/X
+ _134_/X
+ _135_/X
+ _136_/X
+ _137_/X
+ _138_/X
+ _139_/X
+ _140_/X
+ _141_/X
+ _142_/X
+ _143_/X
+ _144_/X
+ _145_/X
+ _146_/X
+ _147_/X
+ _148_/X
+ _149_/X
+ _150_/X
+ _151_/X
+ _152_/X
+ _153_/X
+ _154_/X
+ _155_/X
+ _156_/X
+ _157_/X
+ _158_/X
+ _159_/Y
+ _160_/Q
+ _161_/Q
+ _162_/Q
+ _163_/Q
+ _164_/Q
+ _165_/Q
+ _166_/Q
+ _167_/Q
+ _168_/Q
+ _169_/Q
+ _170_/Q
+ _171_/Q
+ _172_/Q
+ _173_/Q
+ _174_/Q
+ _175_/Q
+ _176_/Q
+ _177_/Q
+ _178_/Q
+ _179_/Q
+ _180_/Q
+ _181_/Q
+ _182_/Q
+ _183_/Q
+ _184_/Q
+ _185_/Q
+ _186_/Q
+ _187_/Q
+ _188_/Q
+ _189_/Q
+ _190_/Q
+ _191_/Q
+ _192_/Q
+ _193_/Q
+ _194_/Q
+ _195_/Q
+ _196_/Q
+ _197_/Q
+ _198_/Q
+ _199_/Q
+ _200_/Q
+ _201_/Q
+ _202_/Q
+ _203_/Q
+ _204_/Q
+ _205_/Q
+ _206_/Q
+ _207_/Q
+ _208_/HI
+ _208_/LO
+ _209_/HI
+ _209_/LO
+ _210_/HI
+ _210_/LO
+ _211_/HI
+ _211_/LO
+ _212_/HI
+ _212_/LO
+ _213_/HI
+ _213_/LO
+ _214_/HI
+ _214_/LO
+ _215_/HI
+ _215_/LO
+ _216_/HI
+ _216_/LO
+ _217_/HI
+ _217_/LO
+ _218_/HI
+ _218_/LO
+ _219_/HI
+ _219_/LO
+ _220_/HI
+ _220_/LO
+ _221_/HI
+ _221_/LO
+ _222_/HI
+ _222_/LO
+ _223_/HI
+ _223_/LO
+ _224_/HI
+ _224_/LO
+ _225_/HI
+ _225_/LO
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 16 unconstrained endpoints.
+  _192_/D
+  _193_/D
+  _194_/D
+  _195_/D
+  _196_/D
+  _197_/D
+  _198_/D
+  _199_/D
+  _200_/D
+  _201_/D
+  _202_/D
+  _203_/D
+  _204_/D
+  _205_/D
+  _206_/D
+  _207_/D

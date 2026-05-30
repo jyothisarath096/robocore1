@@ -1,0 +1,539 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= Typical Corner ===================================
+
+Startpoint: _198_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: rx_dout[6] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.15    0.00    0.00 ^ _198_/CLK (sky130_fd_sc_hd__dfxtp_4)
+                  0.39    0.63    0.63 ^ _198_/Q (sky130_fd_sc_hd__dfxtp_4)
+     1    0.14                           net112 (net)
+                  0.45    0.11    0.74 ^ output112/A (sky130_fd_sc_hd__buf_2)
+                  0.51    0.53    1.27 ^ output112/X (sky130_fd_sc_hd__buf_2)
+     1    0.11                           rx_dout[6] (net)
+                  0.52    0.06    1.33 ^ rx_dout[6] (out)
+                                  1.33   data arrival time
+
+                  0.15   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                         -2.00    7.75   output external delay
+                                  7.75   data required time
+-----------------------------------------------------------------------------
+                                  7.75   data required time
+                                 -1.33   data arrival time
+-----------------------------------------------------------------------------
+                                  6.42   slack (MET)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= Typical Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= Typical Corner ===================================
+
+max slew
+
+Pin                                    Limit    Slew   Slack
+------------------------------------------------------------
+u_rx_sram/din0[7]                       0.75    0.93   -0.18 (VIOLATED)
+input62/X                               0.75    0.93   -0.18 (VIOLATED)
+
+
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 446 unannotated drivers.
+ clk
+ pd_addr[0]
+ pd_addr[1]
+ pd_addr[2]
+ pd_addr[3]
+ pd_addr[4]
+ pd_addr[5]
+ pd_addr[6]
+ pd_addr[7]
+ pd_addr[8]
+ pd_re
+ pd_sel
+ pd_wdata[0]
+ pd_wdata[10]
+ pd_wdata[11]
+ pd_wdata[12]
+ pd_wdata[13]
+ pd_wdata[14]
+ pd_wdata[15]
+ pd_wdata[16]
+ pd_wdata[17]
+ pd_wdata[18]
+ pd_wdata[19]
+ pd_wdata[1]
+ pd_wdata[20]
+ pd_wdata[21]
+ pd_wdata[22]
+ pd_wdata[23]
+ pd_wdata[24]
+ pd_wdata[25]
+ pd_wdata[26]
+ pd_wdata[27]
+ pd_wdata[28]
+ pd_wdata[29]
+ pd_wdata[2]
+ pd_wdata[30]
+ pd_wdata[31]
+ pd_wdata[3]
+ pd_wdata[4]
+ pd_wdata[5]
+ pd_wdata[6]
+ pd_wdata[7]
+ pd_wdata[8]
+ pd_wdata[9]
+ pd_we
+ rx_addr[0]
+ rx_addr[1]
+ rx_addr[2]
+ rx_addr[3]
+ rx_addr[4]
+ rx_addr[5]
+ rx_addr[6]
+ rx_addr[7]
+ rx_addr[8]
+ rx_addr[9]
+ rx_din[0]
+ rx_din[1]
+ rx_din[2]
+ rx_din[3]
+ rx_din[4]
+ rx_din[5]
+ rx_din[6]
+ rx_din[7]
+ rx_we
+ tx_addr[0]
+ tx_addr[1]
+ tx_addr[2]
+ tx_addr[3]
+ tx_addr[4]
+ tx_addr[5]
+ tx_addr[6]
+ tx_addr[7]
+ tx_addr[8]
+ tx_addr[9]
+ _089_/Y
+ _090_/Y
+ _091_/Y
+ _092_/X
+ _093_/X
+ _094_/X
+ _095_/X
+ _096_/X
+ _097_/X
+ _098_/X
+ _099_/X
+ _100_/X
+ _101_/X
+ _102_/X
+ _103_/X
+ _104_/X
+ _105_/X
+ _106_/X
+ _107_/X
+ _108_/X
+ _109_/X
+ _110_/X
+ _111_/X
+ _112_/X
+ _113_/X
+ _114_/X
+ _115_/X
+ _116_/X
+ _117_/X
+ _118_/X
+ _119_/X
+ _120_/X
+ _121_/X
+ _122_/X
+ _123_/X
+ _124_/X
+ _125_/X
+ _126_/X
+ _127_/X
+ _128_/X
+ _129_/X
+ _130_/X
+ _131_/X
+ _132_/X
+ _133_/X
+ _134_/X
+ _135_/X
+ _136_/X
+ _137_/X
+ _138_/X
+ _139_/X
+ _140_/X
+ _141_/X
+ _142_/X
+ _143_/X
+ _144_/X
+ _145_/X
+ _146_/X
+ _147_/X
+ _148_/X
+ _149_/X
+ _150_/X
+ _151_/X
+ _152_/X
+ _153_/X
+ _154_/X
+ _155_/X
+ _156_/X
+ _157_/X
+ _158_/X
+ _159_/Y
+ _160_/Q
+ _161_/Q
+ _162_/Q
+ _163_/Q
+ _164_/Q
+ _165_/Q
+ _166_/Q
+ _167_/Q
+ _168_/Q
+ _169_/Q
+ _170_/Q
+ _171_/Q
+ _172_/Q
+ _173_/Q
+ _174_/Q
+ _175_/Q
+ _176_/Q
+ _177_/Q
+ _178_/Q
+ _179_/Q
+ _180_/Q
+ _181_/Q
+ _182_/Q
+ _183_/Q
+ _184_/Q
+ _185_/Q
+ _186_/Q
+ _187_/Q
+ _188_/Q
+ _189_/Q
+ _190_/Q
+ _191_/Q
+ _192_/Q
+ _193_/Q
+ _194_/Q
+ _195_/Q
+ _196_/Q
+ _197_/Q
+ _198_/Q
+ _199_/Q
+ _200_/Q
+ _201_/Q
+ _202_/Q
+ _203_/Q
+ _204_/Q
+ _205_/Q
+ _206_/Q
+ _207_/Q
+ input1/X
+ input10/X
+ input11/X
+ input12/X
+ input13/X
+ input14/X
+ input15/X
+ input16/X
+ input17/X
+ input18/X
+ input19/X
+ input2/X
+ input20/X
+ input21/X
+ input22/X
+ input23/X
+ input24/X
+ input25/X
+ input26/X
+ input27/X
+ input28/X
+ input29/X
+ input3/X
+ input30/X
+ input31/X
+ input32/X
+ input33/X
+ input34/X
+ input35/X
+ input36/X
+ input37/X
+ input38/X
+ input39/X
+ input4/X
+ input40/X
+ input41/X
+ input42/X
+ input43/X
+ input44/X
+ input45/X
+ input46/X
+ input47/X
+ input48/X
+ input49/X
+ input5/X
+ input50/X
+ input51/X
+ input52/X
+ input53/X
+ input54/X
+ input55/X
+ input56/X
+ input57/X
+ input58/X
+ input59/X
+ input6/X
+ input60/X
+ input61/X
+ input62/X
+ input63/X
+ input64/X
+ input65/X
+ input66/X
+ input67/X
+ input68/X
+ input69/X
+ input7/X
+ input70/X
+ input71/X
+ input72/X
+ input73/X
+ input8/X
+ input9/X
+ output100/X
+ output101/X
+ output102/X
+ output103/X
+ output104/X
+ output105/X
+ output106/X
+ output107/X
+ output108/X
+ output109/X
+ output110/X
+ output111/X
+ output112/X
+ output113/X
+ output114/X
+ output115/X
+ output116/X
+ output117/X
+ output118/X
+ output119/X
+ output120/X
+ output121/X
+ output74/X
+ output75/X
+ output76/X
+ output77/X
+ output78/X
+ output79/X
+ output80/X
+ output81/X
+ output82/X
+ output83/X
+ output84/X
+ output85/X
+ output86/X
+ output87/X
+ output88/X
+ output89/X
+ output90/X
+ output91/X
+ output92/X
+ output93/X
+ output94/X
+ output95/X
+ output96/X
+ output97/X
+ output98/X
+ output99/X
+ u_pd_sram/dout0[0]
+ u_pd_sram/dout0[10]
+ u_pd_sram/dout0[11]
+ u_pd_sram/dout0[12]
+ u_pd_sram/dout0[13]
+ u_pd_sram/dout0[14]
+ u_pd_sram/dout0[15]
+ u_pd_sram/dout0[16]
+ u_pd_sram/dout0[17]
+ u_pd_sram/dout0[18]
+ u_pd_sram/dout0[19]
+ u_pd_sram/dout0[1]
+ u_pd_sram/dout0[20]
+ u_pd_sram/dout0[21]
+ u_pd_sram/dout0[22]
+ u_pd_sram/dout0[23]
+ u_pd_sram/dout0[24]
+ u_pd_sram/dout0[25]
+ u_pd_sram/dout0[26]
+ u_pd_sram/dout0[27]
+ u_pd_sram/dout0[28]
+ u_pd_sram/dout0[29]
+ u_pd_sram/dout0[2]
+ u_pd_sram/dout0[30]
+ u_pd_sram/dout0[31]
+ u_pd_sram/dout0[3]
+ u_pd_sram/dout0[4]
+ u_pd_sram/dout0[5]
+ u_pd_sram/dout0[6]
+ u_pd_sram/dout0[7]
+ u_pd_sram/dout0[8]
+ u_pd_sram/dout0[9]
+ u_pd_sram/dout1[0]
+ u_pd_sram/dout1[10]
+ u_pd_sram/dout1[11]
+ u_pd_sram/dout1[12]
+ u_pd_sram/dout1[13]
+ u_pd_sram/dout1[14]
+ u_pd_sram/dout1[15]
+ u_pd_sram/dout1[16]
+ u_pd_sram/dout1[17]
+ u_pd_sram/dout1[18]
+ u_pd_sram/dout1[19]
+ u_pd_sram/dout1[1]
+ u_pd_sram/dout1[20]
+ u_pd_sram/dout1[21]
+ u_pd_sram/dout1[22]
+ u_pd_sram/dout1[23]
+ u_pd_sram/dout1[24]
+ u_pd_sram/dout1[25]
+ u_pd_sram/dout1[26]
+ u_pd_sram/dout1[27]
+ u_pd_sram/dout1[28]
+ u_pd_sram/dout1[29]
+ u_pd_sram/dout1[2]
+ u_pd_sram/dout1[30]
+ u_pd_sram/dout1[31]
+ u_pd_sram/dout1[3]
+ u_pd_sram/dout1[4]
+ u_pd_sram/dout1[5]
+ u_pd_sram/dout1[6]
+ u_pd_sram/dout1[7]
+ u_pd_sram/dout1[8]
+ u_pd_sram/dout1[9]
+ u_pd_sram_133/HI
+ u_pd_sram_133/LO
+ u_pd_sram_134/HI
+ u_pd_sram_134/LO
+ u_pd_sram_135/HI
+ u_pd_sram_135/LO
+ u_pd_sram_136/HI
+ u_pd_sram_136/LO
+ u_rx_sram/dout0[0]
+ u_rx_sram/dout0[1]
+ u_rx_sram/dout0[2]
+ u_rx_sram/dout0[3]
+ u_rx_sram/dout0[4]
+ u_rx_sram/dout0[5]
+ u_rx_sram/dout0[6]
+ u_rx_sram/dout0[7]
+ u_rx_sram/dout1[0]
+ u_rx_sram/dout1[1]
+ u_rx_sram/dout1[2]
+ u_rx_sram/dout1[3]
+ u_rx_sram/dout1[4]
+ u_rx_sram/dout1[5]
+ u_rx_sram/dout1[6]
+ u_rx_sram/dout1[7]
+ u_rx_sram_122/HI
+ u_rx_sram_122/LO
+ u_rx_sram_137/HI
+ u_rx_sram_137/LO
+ u_tx_sram/dout0[0]
+ u_tx_sram/dout0[1]
+ u_tx_sram/dout0[2]
+ u_tx_sram/dout0[3]
+ u_tx_sram/dout0[4]
+ u_tx_sram/dout0[5]
+ u_tx_sram/dout0[6]
+ u_tx_sram/dout0[7]
+ u_tx_sram/dout1[0]
+ u_tx_sram/dout1[1]
+ u_tx_sram/dout1[2]
+ u_tx_sram/dout1[3]
+ u_tx_sram/dout1[4]
+ u_tx_sram/dout1[5]
+ u_tx_sram/dout1[6]
+ u_tx_sram/dout1[7]
+ u_tx_sram_123/HI
+ u_tx_sram_123/LO
+ u_tx_sram_124/HI
+ u_tx_sram_124/LO
+ u_tx_sram_125/HI
+ u_tx_sram_125/LO
+ u_tx_sram_126/HI
+ u_tx_sram_126/LO
+ u_tx_sram_127/HI
+ u_tx_sram_127/LO
+ u_tx_sram_128/HI
+ u_tx_sram_128/LO
+ u_tx_sram_129/HI
+ u_tx_sram_129/LO
+ u_tx_sram_130/HI
+ u_tx_sram_130/LO
+ u_tx_sram_131/HI
+ u_tx_sram_131/LO
+ u_tx_sram_132/HI
+ u_tx_sram_132/LO
+ u_tx_sram_138/HI
+ u_tx_sram_138/LO
+ u_tx_sram_139/HI
+ u_tx_sram_139/LO
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 2
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 16 unconstrained endpoints.
+  _192_/D
+  _193_/D
+  _194_/D
+  _195_/D
+  _196_/D
+  _197_/D
+  _198_/D
+  _199_/D
+  _200_/D
+  _201_/D
+  _202_/D
+  _203_/D
+  _204_/D
+  _205_/D
+  _206_/D
+  _207_/D

@@ -1,0 +1,74 @@
+
+62. Executing CHECK pass (checking for obvious problems).
+Checking module sram_wrapper...
+Warning: Wire sram_wrapper.\tx_dout [7] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [6] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [5] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [4] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [3] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [2] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [1] is used but has no driver.
+Warning: Wire sram_wrapper.\tx_dout [0] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [7] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [6] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [5] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [4] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [3] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [2] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [1] is used but has no driver.
+Warning: Wire sram_wrapper.\rx_dout [0] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [31] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [30] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [29] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [28] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [27] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [26] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [25] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [24] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [23] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [22] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [21] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [20] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [19] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [18] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [17] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [16] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [15] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [14] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [13] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [12] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [11] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [10] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [9] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [8] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [7] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [6] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [5] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [4] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [3] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [2] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [1] is used but has no driver.
+Warning: Wire sram_wrapper.\pd_dout [0] is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$323 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$321 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$319 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$317 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$315 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$313 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$311 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$309 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$307 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$305 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$303 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$301 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$299 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:47:hilomap_worker$297 is used but has no driver.
+Warning: Wire sram_wrapper.$abc$179$logic_not$/openlane/designs/sram_wrapper/src/sram_wrapper.v:57$10_Y is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$295 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$293 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$291 is used but has no driver.
+Warning: Wire sram_wrapper.$auto$hilomap.cc:39:hilomap_worker$289 is used but has no driver.
+Warning: Wire sram_wrapper.$abc$179$logic_not$/openlane/designs/sram_wrapper/src/sram_wrapper.v:36$8_Y is used but has no driver.
+Warning: Wire sram_wrapper.$abc$179$logic_not$/openlane/designs/sram_wrapper/src/sram_wrapper.v:43$9_Y is used but has no driver.
+Warning: Wire sram_wrapper.$abc$179$logic_not$/openlane/designs/sram_wrapper/src/sram_wrapper.v:35$7_Y is used but has no driver.
+Found and reported 70 problems.

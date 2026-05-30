@@ -1,0 +1,22 @@
+{
+  "DESIGN_NAME": "robocore1_top",
+  "VERILOG_FILES": "dir::src/*.v",
+  "VERILOG_FILES_BLACKBOX": "designs/robocore1/macros/verilog/sram_wrapper_bb.v designs/robocore1/macros/verilog/icg_bb.v",
+  "CLOCK_PORT": "clk", "CLOCK_PERIOD": 10.0,
+  "BASE_SDC_FILE": "designs/robocore1/constraints.sdc",
+  "FP_SIZING": "absolute",
+  "DIE_AREA": "0 0 6000 6000", "CORE_AREA": "10 10 5990 5990",
+  "PL_TARGET_DENSITY": 0.28, "SYNTH_STRATEGY": "DELAY 3",
+  "MAX_FANOUT_CONSTRAINT": 4, "GRT_ADJUSTMENT": 0.15,
+  "GLB_RESIZER_TIMING_OPTIMIZATIONS": 0,
+  "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 0,
+  "EXTRA_LEFS": "designs/robocore1/macros/lef/sram_wrapper.lef",
+  "EXTRA_GDS_FILES": "designs/robocore1/macros/gds/sram_wrapper.gds",
+  "MACRO_PLACEMENT_CFG": "designs/robocore1/macro_placement.cfg",
+  "VDD_NETS": "VPWR vccd1", "GND_NETS": "VGND vssd1",
+  "FP_PDN_MACRO_HOOKS": "u_ec.u_sram VPWR VGND VPWR VGND",
+  "QUIT_ON_LVS_ERROR": 0, "RUN_MAGIC_DRC": 0,
+  "FP_PDN_CHECK_NODES": 0, "RUN_IRDROP_REPORT": 0,
+  "QUIT_ON_TIMING_VIOLATIONS": 0, "QUIT_ON_XOR_ERROR": 0,
+  "QUIT_ON_SYNTH_CHECKS": 0
+}
