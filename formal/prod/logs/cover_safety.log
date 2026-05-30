@@ -1,0 +1,386 @@
+SBY 13:23:59 [formal/prod/cover_safety] Removing directory '/workspace/robocore1/formal/prod/cover_safety'.
+SBY 13:23:59 [formal/prod/cover_safety] Copy '/workspace/robocore1/formal/prod/cover_safety_formal.v' to '/workspace/robocore1/formal/prod/cover_safety/src/cover_safety_formal.v'.
+SBY 13:23:59 [formal/prod/cover_safety] Copy '/workspace/robocore1/src/safety_subsystem.v' to '/workspace/robocore1/formal/prod/cover_safety/src/safety_subsystem.v'.
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: smtbmc z3
+SBY 13:23:59 [formal/prod/cover_safety] base: starting process "cd formal/prod/cover_safety/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 13:23:59 [formal/prod/cover_safety] base: /workspace/robocore1/formal/prod/cover_safety_formal.v:32: Warning: Identifier `\u_safety.wd_fault' is implicitly declared.
+SBY 13:23:59 [formal/prod/cover_safety] base: /workspace/robocore1/formal/prod/cover_safety_formal.v:32: Warning: Range select [3:0] out of bounds on signal `\u_safety.wd_fault': Setting all 4 result bits to undef.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Replacing memory \wd_counter with list of registers. See /workspace/robocore1/src/safety_subsystem.v:113
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Resizing cell port cover_safety_top.u_safety.wd_expired from 1 bits to 4 bits.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_clear is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\rst_n is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [95] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [94] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [93] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [92] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [91] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [90] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [89] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [88] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [87] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [86] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [85] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [84] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [83] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [82] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [81] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [80] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [79] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [78] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [77] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [76] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [75] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [74] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [73] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [72] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [71] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [70] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [69] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [68] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [67] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [66] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [65] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [64] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [63] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [62] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [61] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [60] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [59] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [58] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [57] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [56] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [55] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [54] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [53] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [52] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [51] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [50] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [49] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [48] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [47] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [46] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [45] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [44] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [43] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [42] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [41] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [40] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [39] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [38] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [37] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [36] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [35] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [34] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [33] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [32] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [31] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [30] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [29] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [28] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [27] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [26] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [25] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [24] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [23] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [22] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [21] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [20] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [19] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [18] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [17] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [16] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [15] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [14] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [13] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [12] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [11] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [10] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [9] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [8] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [7] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [6] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [5] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [4] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_timeout_flat [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_pet [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_pet [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_pet [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_pet [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_enable [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_enable [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_enable [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\wd_enable [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [31] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [30] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [29] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [28] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [27] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [26] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [25] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [24] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [23] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [22] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [21] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [20] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [19] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [18] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [17] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [16] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [15] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [14] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [13] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [12] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [11] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [10] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [9] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [8] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [7] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [6] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [5] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [4] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\fault_in [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\clk is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\brownout_n is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: Warning: Wire cover_safety_top.\estop_n is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] base: finished (returncode=0)
+SBY 13:23:59 [formal/prod/cover_safety] prep: starting process "cd formal/prod/cover_safety/model; yosys -ql design_prep.log design_prep.ys"
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_clear is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\clk is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\brownout_n is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\estop_n is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\rst_n is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [95] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [94] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [93] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [92] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [91] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [90] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [89] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [88] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [87] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [86] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [85] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [84] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [83] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [82] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [81] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [80] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [79] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [78] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [77] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [76] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [75] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [74] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [73] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [72] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [71] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [70] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [69] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [68] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [67] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [66] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [65] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [64] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [63] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [62] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [61] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [60] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [59] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [58] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [57] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [56] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [55] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [54] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [53] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [52] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [51] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [50] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [49] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [48] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [47] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [46] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [45] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [44] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [43] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [42] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [41] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [40] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [39] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [38] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [37] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [36] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [35] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [34] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [33] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [32] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [31] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [30] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [29] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [28] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [27] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [26] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [25] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [24] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [23] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [22] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [21] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [20] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [19] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [18] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [17] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [16] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [15] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [14] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [13] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [12] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [11] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [10] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [9] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [8] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [7] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [6] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [5] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [4] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_timeout_flat [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_pet [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_pet [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_pet [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_pet [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_enable [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_enable [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_enable [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\wd_enable [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [31] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [30] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [29] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [28] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [27] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [26] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [25] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [24] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [23] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [22] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [21] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [20] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [19] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [18] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [17] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [16] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [15] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [14] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [13] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [12] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [11] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [10] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [9] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [8] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [7] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [6] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [5] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [4] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [3] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [2] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [1] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: Warning: Wire cover_safety_top.\fault_in [0] is used but has no driver.
+SBY 13:23:59 [formal/prod/cover_safety] prep: finished (returncode=0)
+SBY 13:23:59 [formal/prod/cover_safety] smt2: starting process "cd formal/prod/cover_safety/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY 13:23:59 [formal/prod/cover_safety] smt2: finished (returncode=0)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: starting process "cd formal/prod/cover_safety; yosys-smtbmc -s z3 --presat -c --noprogress -t 60  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Solver: z3
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 2 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:56.23-56.49 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_56_18)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:72.23-72.71 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_72_61)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:70.23-70.52 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_70_57)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:69.23-69.52 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_69_54)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:68.23-68.52 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_68_51)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:60.23-60.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_60_30)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:75.23-75.70 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_75_73)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:73.23-73.74 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_73_67)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:58.23-58.54 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_58_24)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:57.23-57.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_57_21)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 5 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:67.23-67.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_67_48)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 5 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:66.23-66.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_66_45)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 6..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 7 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:59.23-59.53 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_59_27)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 8 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:62.23-62.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_62_33)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace5.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace5.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 8 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:77.23-77.59 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_77_77)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 8 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:65.23-65.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_65_42)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 8 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:64.23-64.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_64_39)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Reached cover statement in step 8 at cover_safety_top: /workspace/robocore1/formal/prod/cover_safety_formal.v:63.23-63.51 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_63_36)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace6.vcd
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace6.smtc
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: ##   0:00:00  Status: passed
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: finished (returncode=0)
+SBY 13:23:59 [formal/prod/cover_safety] engine_0: Status returned by engine: pass
+SBY 13:23:59 [formal/prod/cover_safety] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 13:23:59 [formal/prod/cover_safety] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 13:23:59 [formal/prod/cover_safety] summary: engine_0 (smtbmc z3) returned pass
+SBY 13:23:59 [formal/prod/cover_safety] summary: cover trace: formal/prod/cover_safety/engine_0/trace0.vcd
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_56_18 at /workspace/robocore1/formal/prod/cover_safety_formal.v:56.23-56.49 in step 2
+SBY 13:23:59 [formal/prod/cover_safety] summary: cover trace: formal/prod/cover_safety/engine_0/trace1.vcd
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_60_30 at /workspace/robocore1/formal/prod/cover_safety_formal.v:60.23-60.51 in step 3
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_68_51 at /workspace/robocore1/formal/prod/cover_safety_formal.v:68.23-68.52 in step 3
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_69_54 at /workspace/robocore1/formal/prod/cover_safety_formal.v:69.23-69.52 in step 3
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_70_57 at /workspace/robocore1/formal/prod/cover_safety_formal.v:70.23-70.52 in step 3
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_72_61 at /workspace/robocore1/formal/prod/cover_safety_formal.v:72.23-72.71 in step 3
+SBY 13:23:59 [formal/prod/cover_safety] summary: cover trace: formal/prod/cover_safety/engine_0/trace2.vcd
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_57_21 at /workspace/robocore1/formal/prod/cover_safety_formal.v:57.23-57.51 in step 4
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_58_24 at /workspace/robocore1/formal/prod/cover_safety_formal.v:58.23-58.54 in step 4
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_73_67 at /workspace/robocore1/formal/prod/cover_safety_formal.v:73.23-73.74 in step 4
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_75_73 at /workspace/robocore1/formal/prod/cover_safety_formal.v:75.23-75.70 in step 4
+SBY 13:23:59 [formal/prod/cover_safety] summary: cover trace: formal/prod/cover_safety/engine_0/trace3.vcd
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_66_45 at /workspace/robocore1/formal/prod/cover_safety_formal.v:66.23-66.51 in step 5
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_67_48 at /workspace/robocore1/formal/prod/cover_safety_formal.v:67.23-67.51 in step 5
+SBY 13:23:59 [formal/prod/cover_safety] summary: cover trace: formal/prod/cover_safety/engine_0/trace4.vcd
+SBY 13:23:59 [formal/prod/cover_safety] summary:   reached cover statement cover_safety_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_safety_formal_v_59_27 at /workspace/robocore1/formal/prod/cover_safety_formal.v:59.23-59.53 in step 7
+SBY 13:23:59 [formal/prod/cover_safety] summary: and 2 further traces
+SBY 13:23:59 [formal/prod/cover_safety] summary: see formal/prod/cover_safety/PASS for a complete summary
+SBY 13:23:59 [formal/prod/cover_safety] DONE (PASS, rc=0)

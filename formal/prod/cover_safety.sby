@@ -1,0 +1,15 @@
+[options]
+mode cover
+depth 60
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -formal /workspace/robocore1/formal/prod/cover_safety_formal.v
+read_verilog /workspace/robocore1/src/safety_subsystem.v
+prep -top cover_safety_top
+
+[files]
+/workspace/robocore1/formal/prod/cover_safety_formal.v
+/workspace/robocore1/src/safety_subsystem.v

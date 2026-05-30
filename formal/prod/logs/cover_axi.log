@@ -1,0 +1,422 @@
+SBY 13:23:07 [formal/prod/cover_axi] Removing directory '/workspace/robocore1/formal/prod/cover_axi'.
+SBY 13:23:07 [formal/prod/cover_axi] Copy '/workspace/robocore1/formal/prod/cover_axi_formal.v' to '/workspace/robocore1/formal/prod/cover_axi/src/cover_axi_formal.v'.
+SBY 13:23:07 [formal/prod/cover_axi] Copy '/workspace/robocore1/src/robocore1_axi.v' to '/workspace/robocore1/formal/prod/cover_axi/src/robocore1_axi.v'.
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: smtbmc z3
+SBY 13:23:07 [formal/prod/cover_axi] base: starting process "cd formal/prod/cover_axi/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wstrb [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wstrb [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wstrb [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wstrb [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [31] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [30] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [29] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [28] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [27] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [26] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [25] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [24] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [23] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [22] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [21] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [20] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [19] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [18] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [17] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [16] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wdata [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [31] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [30] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [29] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [28] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [27] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [26] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [25] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [24] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [23] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [22] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [21] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [20] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [19] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [18] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [17] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [16] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awaddr [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [31] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [30] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [29] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [28] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [27] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [26] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [25] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [24] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [23] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [22] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [21] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [20] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [19] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [18] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [17] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [16] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\araddr [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\rst_n is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\irq_in [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\rready is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\bready is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\arvalid is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\wvalid is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\awvalid is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: Warning: Wire cover_axi_top.\clk is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] base: finished (returncode=0)
+SBY 13:23:07 [formal/prod/cover_axi] prep: starting process "cd formal/prod/cover_axi/model; yosys -ql design_prep.log design_prep.ys"
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wstrb [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wstrb [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wstrb [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wstrb [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [31] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [30] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [29] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [28] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [27] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [26] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [25] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [24] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [23] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [22] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [21] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [20] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [19] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [18] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [17] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [16] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wdata [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [31] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [30] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [29] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [28] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [27] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [26] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [25] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [24] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [23] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [22] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [21] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [20] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [19] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [18] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [17] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [16] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awaddr [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [31] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [30] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [29] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [28] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [27] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [26] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [25] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [24] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [23] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [22] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [21] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [20] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [19] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [18] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [17] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [16] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\araddr [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\clk is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\rst_n is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [15] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [14] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [13] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [12] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [11] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [10] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [9] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [8] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [7] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [6] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [5] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [4] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [3] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [2] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [1] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\irq_in [0] is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\rready is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\bready is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\arvalid is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\wvalid is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: Warning: Wire cover_axi_top.\awvalid is used but has no driver.
+SBY 13:23:07 [formal/prod/cover_axi] prep: finished (returncode=0)
+SBY 13:23:07 [formal/prod/cover_axi] smt2: starting process "cd formal/prod/cover_axi/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY 13:23:07 [formal/prod/cover_axi] smt2: finished (returncode=0)
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: starting process "cd formal/prod/cover_axi; yosys-smtbmc -s z3 --presat -c --noprogress -t 60  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Solver: z3
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 2 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:92.23-92.55 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_92_56)
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 2 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:89.23-89.55 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_89_44)
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 13:23:07 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:93.23-93.55 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_93_60)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:90.23-90.55 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_90_48)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 3 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:138.23-138.75 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_138_185)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:94.23-94.55 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_94_64)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:91.23-91.55 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_91_52)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:124.23-124.61 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_124_153)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:123.23-123.61 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_123_148)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:114.23-114.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_114_123)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:103.23-103.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_103_88)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:111.23-111.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_111_108)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace3.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace3.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:130.23-130.71 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_130_164)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace4.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace4.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:129.23-129.71 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_129_158)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:104.23-104.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_104_93)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace5.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace5.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:112.23-112.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_112_113)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace6.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace6.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:146.23-146.57 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_146_202)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:106.23-106.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_106_103)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace7.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace7_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace7.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace7.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:99.23-99.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_99_68)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace8.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace8_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace8.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace8.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:100.23-100.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_100_73)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace9.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace9_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace9.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace9.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:102.23-102.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_102_83)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace10.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace10_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace10.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace10.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:105.23-105.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_105_98)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace11.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace11_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace11.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace11.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:101.23-101.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_101_78)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace12.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace12_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace12.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace12.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:116.23-116.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_116_133)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace13.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace13_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace13.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace13.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:145.23-145.68 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_145_197)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:118.23-118.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_118_143)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace14.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace14_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace14.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace14.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:115.23-115.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_115_128)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace15.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace15_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace15.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace15.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:113.23-113.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_113_118)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace16.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace16_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace16.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace16.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 4 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:117.23-117.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_117_138)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace17.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace17_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace17.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace17.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 5 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:140.23-140.54 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_140_194)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 5 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:139.23-139.52 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_139_190)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 5 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:136.23-136.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_136_174)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Reached cover statement in step 5 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:135.23-135.46 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_135_170)
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace18.vcd
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace18_tb.v
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace18.smtc
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace18.yw
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 6..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY 13:23:08 [formal/prod/cover_axi] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: ##   0:00:01  Reached cover statement in step 8 at cover_axi_top: /workspace/robocore1/formal/prod/cover_axi_formal.v:137.23-137.65 (_witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_137_180)
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: ##   0:00:01  Writing trace to VCD file: engine_0/trace19.vcd
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: ##   0:00:01  Writing trace to Verilog testbench: engine_0/trace19_tb.v
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: ##   0:00:01  Writing trace to constraints file: engine_0/trace19.smtc
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: ##   0:00:01  Writing trace to Yosys witness file: engine_0/trace19.yw
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: ##   0:00:01  Status: passed
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: finished (returncode=0)
+SBY 13:23:09 [formal/prod/cover_axi] engine_0: Status returned by engine: pass
+SBY 13:23:09 [formal/prod/cover_axi] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 13:23:09 [formal/prod/cover_axi] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 13:23:09 [formal/prod/cover_axi] summary: engine_0 (smtbmc z3) returned pass
+SBY 13:23:09 [formal/prod/cover_axi] summary: cover trace: formal/prod/cover_axi/engine_0/trace0.vcd
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_89_44 at /workspace/robocore1/formal/prod/cover_axi_formal.v:89.23-89.55 in step 2
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_92_56 at /workspace/robocore1/formal/prod/cover_axi_formal.v:92.23-92.55 in step 2
+SBY 13:23:09 [formal/prod/cover_axi] summary: cover trace: formal/prod/cover_axi/engine_0/trace1.vcd
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_138_185 at /workspace/robocore1/formal/prod/cover_axi_formal.v:138.23-138.75 in step 3
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_90_48 at /workspace/robocore1/formal/prod/cover_axi_formal.v:90.23-90.55 in step 3
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_93_60 at /workspace/robocore1/formal/prod/cover_axi_formal.v:93.23-93.55 in step 3
+SBY 13:23:09 [formal/prod/cover_axi] summary: cover trace: formal/prod/cover_axi/engine_0/trace10.vcd
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_102_83 at /workspace/robocore1/formal/prod/cover_axi_formal.v:102.23-102.65 in step 4
+SBY 13:23:09 [formal/prod/cover_axi] summary: cover trace: formal/prod/cover_axi/engine_0/trace11.vcd
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_105_98 at /workspace/robocore1/formal/prod/cover_axi_formal.v:105.23-105.65 in step 4
+SBY 13:23:09 [formal/prod/cover_axi] summary: cover trace: formal/prod/cover_axi/engine_0/trace12.vcd
+SBY 13:23:09 [formal/prod/cover_axi] summary:   reached cover statement cover_axi_top._witness_.check_cover__workspace_robocore1_formal_prod_cover_axi_formal_v_101_78 at /workspace/robocore1/formal/prod/cover_axi_formal.v:101.23-101.65 in step 4
+SBY 13:23:09 [formal/prod/cover_axi] summary: and 15 further traces
+SBY 13:23:09 [formal/prod/cover_axi] summary: see formal/prod/cover_axi/PASS for a complete summary
+SBY 13:23:09 [formal/prod/cover_axi] DONE (PASS, rc=0)

@@ -1,0 +1,15 @@
+[options]
+mode cover
+depth 60
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -formal -D FORMAL /workspace/robocore1/formal/prod/cover_axi_formal.v
+read_verilog -D FORMAL /workspace/robocore1/src/robocore1_axi.v
+prep -top cover_axi_top
+
+[files]
+/workspace/robocore1/formal/prod/cover_axi_formal.v
+/workspace/robocore1/src/robocore1_axi.v

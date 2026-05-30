@@ -151,6 +151,16 @@ module robocore1_axi #(
     // System
     // --------------------------------------------------------
     output reg          sys_reset_req
+`ifdef FORMAL
+    ,
+    output wire [1:0]  f_wr_state,
+    output wire [1:0]  f_rd_state,
+    output wire [3:0]  f_wr_block,
+    output wire [3:0]  f_rd_block,
+    output wire [15:0] f_irq_active,
+    output wire [15:0] f_irq_pending,
+    output wire [31:0] f_sys_scratch
+`endif
 );
 
 // ============================================================
@@ -513,5 +523,15 @@ always @(posedge aclk or negedge aresetn) begin
 end
 
 assign irq_out = |irq_active;
+
+`ifdef FORMAL
+assign f_wr_state    = wr_state;
+assign f_rd_state    = rd_state;
+assign f_wr_block    = wr_block;
+assign f_rd_block    = rd_block;
+assign f_irq_active  = irq_active;
+assign f_irq_pending = irq_pending;
+assign f_sys_scratch = sys_scratch;
+`endif
 
 endmodule
