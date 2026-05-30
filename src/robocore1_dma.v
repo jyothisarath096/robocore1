@@ -51,6 +51,16 @@ module robocore1_dma #(
     output reg  [NUM_CHANNELS-1:0] irq_complete,
     output reg  [NUM_CHANNELS-1:0] irq_chain,
     output reg                     irq_error
+`ifdef FORMAL
+    ,
+    output wire [3:0]  f_seq_state,
+    output wire [2:0]  f_seq_ch,
+    output wire [7:0]  f_seq_words,
+    output wire [31:0] f_seq_ctrl,
+    output wire [2:0]  f_rr,
+    output wire [NUM_CHANNELS-1:0] f_ch_enabled,
+    output wire [NUM_CHANNELS-1:0] f_ch_pending
+`endif
 );
 
 // ============================================================
@@ -88,30 +98,63 @@ reg [NUM_CHANNELS-1:0] ch_pending;
 reg [3:0] ch_desc [0:NUM_CHANNELS-1];
 
 // ============================================================
-// Trigger detection — one always block per channel
+// Sequencer state — declared here so trigger block can reference
 // ============================================================
-genvar gi;
-generate
-for (gi = 0; gi < NUM_CHANNELS; gi = gi + 1) begin : trig_gen
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            ch_pending[gi] <= 0;
-            // ch_sw_trig owned by config slave
-        end else if (ch_enabled[gi] && !ch_pending[gi]) begin
-            case (desc_ram[gi*64 + ch_desc[gi]*4 + 2][10:8])
-                3'd0: if (ch_sw_trig[gi]) begin ch_pending[gi]<=1; ch_sw_trig[gi]<=0; end
-                3'd1: if (p_sync0) ch_pending[gi] <= 1;
-                3'd2: if (p_sync1) ch_pending[gi] <= 1;
-                3'd3: if (p_1khz)  ch_pending[gi] <= 1;
-                3'd4: if (p_1mhz)  ch_pending[gi] <= 1;
-                3'd5: if (p_can)   ch_pending[gi] <= 1;
-                3'd6: if (p_ext)   ch_pending[gi] <= 1;
-                default: ;
-            endcase
+reg [3:0]  seq_state;
+reg [2:0]  seq_ch;
+reg [7:0]  seq_words;
+reg [31:0] seq_src, seq_dst, seq_ctrl, seq_rdata;
+reg [2:0]  rr;
+reg [2:0]  arb_cnt;
+
+// ============================================================
+// Per-channel state machine — single always block, integer loop
+// ONE driver per signal. Handles: reset, trigger, sequencer, config.
+// ============================================================
+integer pi;
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        ch_pending  <= 0;
+        ch_enabled  <= 0;
+        ch_sw_trig  <= 0;
+    end else begin
+        for (pi = 0; pi < NUM_CHANNELS; pi = pi + 1) begin
+            // Priority 1: sequencer clears pending on SEQ_LOAD
+            if (seq_state == 4'd3 && seq_ch == pi)
+                ch_pending[pi] <= 0;
+            // Priority 2: sequencer sets pending on chain (SEQ_NEXT + ctrl[13])
+            else if (seq_state == 4'd12 && seq_ch == pi && seq_ctrl[13])
+                ch_pending[pi] <= 1;
+            // Priority 3: trigger detection
+            else if (ch_enabled[pi] && !ch_pending[pi]) begin
+                case (desc_ram[pi*64 + ch_desc[pi]*4 + 2][10:8])
+                    3'd0: if (ch_sw_trig[pi]) begin
+                              ch_pending[pi] <= 1;
+                              ch_sw_trig[pi] <= 0;
+                          end
+                    3'd1: if (p_sync0) ch_pending[pi] <= 1;
+                    3'd2: if (p_sync1) ch_pending[pi] <= 1;
+                    3'd3: if (p_1khz)  ch_pending[pi] <= 1;
+                    3'd4: if (p_1mhz)  ch_pending[pi] <= 1;
+                    3'd5: if (p_can)   ch_pending[pi] <= 1;
+                    3'd6: if (p_ext)   ch_pending[pi] <= 1;
+                    default: ;
+                endcase
+            end
+            // Config slave sets ch_enabled and ch_sw_trig
+            if (cfg_awvalid && cfg_wvalid && cfg_awaddr[11] == 1'b1) begin
+                if (cfg_awaddr[4:2] == pi[2:0]) begin
+                    if (cfg_wdata[0]) ch_enabled[pi] <= 1;
+                    if (cfg_wdata[1]) ch_sw_trig[pi] <= 1;
+                end
+            end
+            // Sequencer disables channel on single-shot (SEQ_NEXT, no chain, no reload)
+            if (seq_state == 4'd12 && seq_ch == pi &&
+                !seq_ctrl[13] && !seq_ctrl[14])
+                ch_enabled[pi] <= 0;
         end
     end
 end
-endgenerate
 
 // ============================================================
 // Sequencer
@@ -130,12 +173,8 @@ localparam SEQ_TSRESP   = 4'd10;
 localparam SEQ_DONE     = 4'd11;
 localparam SEQ_NEXT     = 4'd12;
 
-reg [3:0]  seq_state;
-reg [2:0]  seq_ch;
-reg [7:0]  seq_words;
-reg [31:0] seq_src, seq_dst, seq_ctrl, seq_rdata;
-reg [2:0]  rr;         // round-robin pointer
-reg [2:0]  arb_cnt;    // arbiter scan counter
+// seq_state/seq_ch/seq_ctrl/rr declared above with per-channel state
+// (moved to allow forward reference from trigger block)
 
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -149,7 +188,6 @@ always @(posedge clk or negedge rst_n) begin
         m_awaddr  <= 0; m_wdata   <= 0; m_wstrb   <= 4'hF;
         m_araddr  <= 0;
         irq_complete <= 0; irq_chain <= 0; irq_error <= 0;
-        ch_enabled   <= 0;
         begin : ch_desc_reset
             integer rd_i;
             for (rd_i = 0; rd_i < NUM_CHANNELS; rd_i = rd_i + 1)
@@ -190,7 +228,6 @@ always @(posedge clk or negedge rst_n) begin
                 seq_dst   <= desc_ram[seq_ch*64 + ch_desc[seq_ch]*4 + 1];
                 seq_ctrl  <= desc_ram[seq_ch*64 + ch_desc[seq_ch]*4 + 2];
                 seq_words <= desc_ram[seq_ch*64 + ch_desc[seq_ch]*4 + 2][7:0];
-                ch_pending[seq_ch] <= 0;
                 rr <= (seq_ch == 3'd7) ? 3'd0 : seq_ch + 1;
                 seq_state <= SEQ_CHECK;
             end
@@ -277,7 +314,6 @@ always @(posedge clk or negedge rst_n) begin
                 if (seq_ctrl[13]) begin
                     // Chain — advance to next descriptor, fire immediately
                     ch_desc[seq_ch]    <= ch_desc[seq_ch] + 1;
-                    ch_pending[seq_ch] <= 1;
                     seq_state <= SEQ_IDLE;
                 end else if (seq_ctrl[14]) begin
                     // Auto-reload — restart from desc 0, wait for next trigger
@@ -287,7 +323,6 @@ always @(posedge clk or negedge rst_n) begin
                 end else begin
                     // Single shot — disable channel
                     ch_desc[seq_ch]    <= 0;
-                    ch_enabled[seq_ch] <= 0;
                     irq_chain[seq_ch]  <= 1;
                     seq_state <= SEQ_IDLE;
                 end
@@ -307,7 +342,6 @@ always @(posedge clk or negedge rst_n) begin
         cfg_awready <= 1; cfg_wready <= 1; cfg_bvalid <= 0;
         cfg_arready <= 1; cfg_rvalid <= 0;
         cfg_bresp   <= 0; cfg_rresp  <= 0; cfg_rdata  <= 0;
-        ch_sw_trig  <= 0;
     end else begin
         cfg_bvalid <= 0;
         cfg_rvalid <= 0;
@@ -320,10 +354,7 @@ always @(posedge clk or negedge rst_n) begin
                 desc_ram[ci*64 + cfg_awaddr[7:4]*4 + cfg_awaddr[3:2]] <= cfg_wdata;
             end else begin
                 ci = cfg_awaddr[4:2];
-                if (ci < NUM_CHANNELS) begin
-                    if (cfg_wdata[0]) ch_enabled[ci] <= 1;
-                    if (cfg_wdata[1]) ch_sw_trig[ci] <= 1;
-                end
+                ; // ch_enabled/ch_sw_trig owned by per-channel always block
             end
         end
         if (cfg_bvalid && cfg_bready) cfg_bvalid <= 0;
@@ -343,5 +374,15 @@ always @(posedge clk or negedge rst_n) begin
         if (cfg_rvalid && cfg_rready) cfg_rvalid <= 0;
     end
 end
+
+`ifdef FORMAL
+assign f_seq_state  = seq_state;
+assign f_seq_ch     = seq_ch;
+assign f_seq_words  = seq_words;
+assign f_seq_ctrl   = seq_ctrl;
+assign f_rr         = rr;
+assign f_ch_enabled = ch_enabled;
+assign f_ch_pending = ch_pending;
+`endif
 
 endmodule

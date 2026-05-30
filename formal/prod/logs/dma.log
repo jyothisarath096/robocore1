@@ -1,0 +1,49 @@
+SBY 12:54:30 [formal/prod/dma] Removing directory '/workspace/robocore1/formal/prod/dma'.
+SBY 12:54:30 [formal/prod/dma] Copy '/workspace/robocore1/formal/prod/dma_formal.v' to '/workspace/robocore1/formal/prod/dma/src/dma_formal.v'.
+SBY 12:54:30 [formal/prod/dma] Copy '/workspace/robocore1/src/robocore1_dma.v' to '/workspace/robocore1/formal/prod/dma/src/robocore1_dma.v'.
+SBY 12:54:30 [formal/prod/dma] engine_0: smtbmc z3
+SBY 12:54:30 [formal/prod/dma] base: starting process "cd formal/prod/dma/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 12:54:30 [formal/prod/dma] base: Warning: Replacing memory \ch_desc with list of registers. See /workspace/robocore1/src/robocore1_dma.v:194
+SBY 12:54:30 [formal/prod/dma] base: Warning: Replacing memory \desc_ram with list of registers. See /workspace/robocore1/src/robocore1_dma.v:354, /workspace/robocore1/src/robocore1_dma.v:90
+SBY 12:54:42 [formal/prod/dma] base: finished (returncode=0)
+SBY 12:54:42 [formal/prod/dma] prep: starting process "cd formal/prod/dma/model; yosys -ql design_prep.log design_prep.ys"
+SBY 12:54:45 [formal/prod/dma] prep: finished (returncode=0)
+SBY 12:54:45 [formal/prod/dma] smt2: starting process "cd formal/prod/dma/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY 12:54:45 [formal/prod/dma] smt2: finished (returncode=0)
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: starting process "cd formal/prod/dma; yosys-smtbmc -s z3 --presat --noprogress -t 8  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: starting process "cd formal/prod/dma; yosys-smtbmc -s z3 --presat -i --noprogress -t 8  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2"
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: ##   0:00:00  Solver: z3
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: ##   0:00:00  Trying induction in step 8..
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: ##   0:00:00  Status: passed
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: finished (returncode=0)
+SBY 12:54:45 [formal/prod/dma] engine_0.induction: Status returned by engine for induction: pass
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY 12:54:45 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY 12:54:46 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY 12:54:46 [formal/prod/dma] engine_0.basecase: ##   0:00:00  Checking assumptions in step 3..
+SBY 12:54:52 [formal/prod/dma] engine_0.basecase: ##   0:00:07  Checking assertions in step 3..
+SBY 12:54:52 [formal/prod/dma] engine_0.basecase: ##   0:00:07  Checking assumptions in step 4..
+SBY 12:55:03 [formal/prod/dma] engine_0.basecase: ##   0:00:17  Checking assertions in step 4..
+SBY 12:55:03 [formal/prod/dma] engine_0.basecase: ##   0:00:17  Checking assumptions in step 5..
+SBY 12:55:18 [formal/prod/dma] engine_0.basecase: ##   0:00:32  Checking assertions in step 5..
+SBY 12:55:18 [formal/prod/dma] engine_0.basecase: ##   0:00:32  Checking assumptions in step 6..
+SBY 12:56:18 [formal/prod/dma] engine_0.basecase: ##   0:01:32  waiting for solver (1 minute)
+SBY 12:56:55 [formal/prod/dma] engine_0.basecase: ##   0:02:10  Checking assertions in step 6..
+SBY 12:56:55 [formal/prod/dma] engine_0.basecase: ##   0:02:10  Checking assumptions in step 7..
+SBY 12:57:55 [formal/prod/dma] engine_0.basecase: ##   0:03:10  waiting for solver (1 minute)
+SBY 13:01:23 [formal/prod/dma] engine_0.basecase: ##   0:06:37  Checking assertions in step 7..
+SBY 13:01:23 [formal/prod/dma] engine_0.basecase: ##   0:06:37  Status: passed
+SBY 13:01:23 [formal/prod/dma] engine_0.basecase: finished (returncode=0)
+SBY 13:01:23 [formal/prod/dma] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 13:01:23 [formal/prod/dma] summary: Elapsed clock time [H:MM:SS (secs)]: 0:06:52 (412)
+SBY 13:01:23 [formal/prod/dma] summary: Elapsed process time [H:MM:SS (secs)]: 0:06:52 (412)
+SBY 13:01:23 [formal/prod/dma] summary: engine_0 (smtbmc z3) returned pass for basecase
+SBY 13:01:23 [formal/prod/dma] summary: engine_0 (smtbmc z3) returned pass for induction
+SBY 13:01:23 [formal/prod/dma] summary: engine_0 did not produce any traces
+SBY 13:01:23 [formal/prod/dma] summary: successful proof by k-induction.
+SBY 13:01:23 [formal/prod/dma] DONE (PASS, rc=0)
