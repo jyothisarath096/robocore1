@@ -260,3 +260,55 @@ RoboCore-1 is free to use, modify, and manufacture. No licensing fees.
 
 Built with OpenLane on SkyWater SKY130.
 GitHub: https://github.com/jyothisarath096/robocore1
+
+---
+
+## Formal Verification
+
+Production-grade formal verification using SymbiYosys + z3, Yosys 0.48, `bind`-based white-box properties, **unbounded k-induction (PROVE mode)**.
+
+### Suite 1: AXI4-Lite Protocol Compliance ✅ PROVED
+
+**Method:** Temporal k-induction, unbounded. `bind` attaches property module directly to DUT — full internal signal access without modifying RTL. 6 induction invariants constrain the proof to reachable states only.
+
+| # | Property | Result |
+|---|---|---|
+| INV1 | bvalid ↔ wr_state == WR_RESP | ✅ PROVED |
+| INV2 | rvalid ↔ rd_state == RD_RESP | ✅ PROVED |
+| INV3 | awready ↔ wr_state == WR_IDLE | ✅ PROVED |
+| INV4 | arready ↔ rd_state == RD_IDLE | ✅ PROVED |
+| INV5 | awready == wready always | ✅ PROVED |
+| INV6 | irq_active == (pending\|in) & ~mask exactly | ✅ PROVED |
+| P1 | BRESP ∈ {OKAY, SLVERR} — never EXOKAY/DECERR | ✅ PROVED |
+| P2 | RRESP ∈ {OKAY, SLVERR} — never EXOKAY/DECERR | ✅ PROVED |
+| P3 | BVALID sticky until BREADY (ARM spec §A3.2.2) | ✅ PROVED |
+| P4 | RVALID sticky until RREADY (ARM spec §A3.2.2) | ✅ PROVED |
+| P5 | AWREADY == WREADY always (AXI4-Lite constraint) | ✅ PROVED |
+| P6 | No new AW handshake while BVALID pending | ✅ PROVED |
+| P7 | BVALID only asserted in WR_RESP state | ✅ PROVED |
+| P8 | RVALID only asserted in RD_RESP state | ✅ PROVED |
+| P9 | wr_state always ∈ {0, 1, 2} | ✅ PROVED |
+| P10 | rd_state always ∈ {0, 1, 2} | ✅ PROVED |
+| P11 | CHIP_ID register always returns 0xAC010002 | ✅ PROVED |
+| P12 | SLVERR on every unmapped read address | ✅ PROVED |
+| P13 | SLVERR on every unmapped write address | ✅ PROVED |
+| P14 | Scratch register round-trip (write = readback) | ✅ PROVED |
+| P15 | wd_pet is a single-cycle pulse, zero elsewhere | ✅ PROVED |
+| P16 | irq_active & irq_mask == 0 for all time | ✅ PROVED |
+| P17 | irq_out == OR(irq_active) exactly | ✅ PROVED |
+| P18 | irq_out low on first post-reset cycle | ✅ PROVED |
+
+
+Tool: SymbiYosys + Yosys 0.48 + z3 4.13.4 
+
+Method: k-induction PROVE mode (unbounded) 
+
+Result: Temporal induction successful — 
+
+PASS Time: ~9 seconds
+
+### Suite 2: IEC 61508 SIL2 Safety — *In Progress*
+### Suite 3: DMA Correctness — *Pending*
+### Suite 4: Cover Completeness — *Pending*
+
+---
