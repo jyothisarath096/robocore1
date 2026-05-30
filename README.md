@@ -309,7 +309,7 @@ PASS Time: ~9 seconds
 
 ### Suite 2: IEC 61508 SIL2 Safety ✅ PROVED
 ### Suite 3: DMA Correctness ✅ PROVED
-### Suite 4: Cover Completeness — *Pending*
+### Suite 4: Cover Completeness ✅ PASSED
 
 ---
 
@@ -355,7 +355,7 @@ Time: ~1 second
 
 
 ### Suite 3: DMA Correctness ✅ PROVED
-### Suite 4: Cover Completeness — *Pending*
+### Suite 4: Cover Completeness ✅ PASSED
 
 ### Suite 3: DMA Correctness ✅ PROVED
 
@@ -401,7 +401,7 @@ Result: Temporal induction successful — PASS
 Time: ~7 minutes (desc_ram is 16KB state — largest block)
 
 
-### Suite 4: Cover Completeness — *Pending*
+### Suite 4: Cover Completeness ✅ PASSED
 
 ---
 
@@ -421,3 +421,59 @@ All proofs use:
 - `bind`-based white-box formal — RTL never modified for verification
 - `ifdef FORMAL` observation ports for internal signal access
 - Unbounded k-induction (temporal induction) where possible
+
+### Suite 4a: AXI Cover Completeness ✅ PASSED
+
+**Method:** Cover mode, depth=60. DUT instantiated directly with `ifdef FORMAL` observation ports. All 33 goals reached with real RTL witness traces (steps 2-8).
+
+| Category | Goals | Reached |
+|---|---|---|
+| AXI state machine states (WR/RD IDLE, DECODE, RESP) | 6 | ✅ All |
+| Register write blocks 0-7 (PWM, Enc, PID, Safety, Tick, CAN, EC, Sys) | 8 | ✅ All |
+| Register read blocks 0-7 | 8 | ✅ All |
+| SLVERR on unmapped read + write | 2 | ✅ All |
+| Successful transactions (OKAY read + write) | 2 | ✅ All |
+| IRQ rise, fall, masked, active | 4 | ✅ All |
+| CHIP_ID value, scratch register written | 2 | ✅ All |
+| **Total** | **33** | **✅ 33/33** |
+
+### Suite 4b: Safety Cover Completeness ✅ PASSED
+
+**Method:** Cover mode, depth=60. DUT instantiated directly. All 18 goals reached with real RTL witness traces (steps 2-8).
+
+| Category | Goals | Reached |
+|---|---|---|
+| Fault sources (estop, brownout, watchdog, system) | 4 | ✅ All |
+| safe_state asserted | 1 | ✅ |
+| fault_reg bits (WD0-3, estop, brownout, PID, enc, PWM) | 9 | ✅ All |
+| Recovery path (safe_state clears) | 1 | ✅ |
+| fault_reg cleared after recovery | 1 | ✅ |
+| Multiple simultaneous faults | 1 | ✅ |
+| All 4 watchdogs expired simultaneously | 1 | ✅ |
+| **Total** | **18** | **✅ 18/18** |
+
+Tool: SymbiYosys + Yosys 0.48 + z3 4.13.4 
+
+Method: Cover mode, depth=60 
+
+Result: All goals reached with real RTL witness traces 
+
+Time: ~2 seconds each
+
+
+---
+
+## Complete Formal Verification Summary
+
+| Suite | Block | Properties | Method | Result | Time |
+|---|---|---|---|---|---|
+| 1 | AXI4-Lite Protocol | 18 assert + 6 inv | k-induction PROVE unbounded | ✅ PROVED | 9s |
+| 2 | IEC 61508 SIL2 Safety | 18 assert + 7 inv | k-induction PROVE unbounded | ✅ PROVED | 1s |
+| 3 | DMA Correctness | 16 assert + 8 inv | k-induction PROVE depth=8 | ✅ PROVED | 7min |
+| 4a | AXI Cover Completeness | 33 cover goals | Cover mode depth=60 | ✅ ALL REACHED | 2s |
+| 4b | Safety Cover Completeness | 18 cover goals | Cover mode depth=60 | ✅ ALL REACHED | 2s |
+
+**Total: 52 assertions + 21 invariants PROVED + 51 cover goals REACHED**
+
+All proofs use Yosys 0.48 + SymbiYosys + z3 4.13.4 on RunPod (AMD EPYC 4564P, 16 cores, 124GB RAM).
+RTL never modified for verification — `bind` and `ifdef FORMAL` observation ports used throughout.
