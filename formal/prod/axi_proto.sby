@@ -1,5 +1,5 @@
 [options]
-mode bmc
+mode prove
 depth 40
 
 [engines]
@@ -8,7 +8,7 @@ smtbmc --stdt z3
 [script]
 read_verilog -formal /workspace/robocore1/formal/prod/axi_proto_formal.v
 read_verilog /workspace/robocore1/src/robocore1_axi.v
-prep -top axi_proto_formal
+prep -top robocore1_axi
 
 [files]
 /workspace/robocore1/formal/prod/axi_proto_formal.v

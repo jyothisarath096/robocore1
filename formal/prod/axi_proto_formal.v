@@ -1,180 +1,259 @@
 `default_nettype none
 // ============================================================
-// RoboCore-1 AXI4-Lite Protocol Formal — Port-Level Properties
-// Yosys 0.36 compatible (no hierarchical refs, no complex witnesses)
-// Properties proved:
-//   P1: BRESP only OKAY/SLVERR
-//   P2: RRESP only OKAY/SLVERR
-//   P3: BVALID sticky until BREADY
-//   P4: RVALID sticky until RREADY
-//   P5: AWREADY == WREADY always (AXI4-Lite)
-//   P6: No new AW handshake while BVALID pending
-//   P7: IRQ output only high when irq_in recently asserted
+// RoboCore-1 AXI4-Lite Formal — Production Grade v3
+// Yosys 0.48 bind-based white-box, PROVE mode, full invariants
+// 18 properties + 6 induction invariants + 11 cover goals
 // ============================================================
-module axi_proto_formal (input wire clk, input wire rst_n);
-
-reg  [31:0] awaddr, wdata, araddr;
-reg         awvalid, wvalid, arvalid;
-reg  [3:0]  wstrb;
-reg         bready, rready;
-reg  [15:0] irq_in;
-
-wire        awready, wready, bvalid, arready, rvalid;
-wire [1:0]  bresp, rresp;
-wire [31:0] rdata;
-wire        irq_out;
-
-robocore1_axi #(.CHIP_ID(32'hAC010002)) u_axi (
-    .aclk(clk), .aresetn(rst_n),
-    .awaddr(awaddr), .awvalid(awvalid), .awready(awready),
-    .wdata(wdata), .wstrb(wstrb), .wvalid(wvalid), .wready(wready),
-    .bresp(bresp), .bvalid(bvalid), .bready(bready),
-    .araddr(araddr), .arvalid(arvalid), .arready(arready),
-    .rdata(rdata), .rresp(rresp), .rvalid(rvalid), .rready(rready),
-    .irq_in(irq_in), .irq_out(irq_out),
-    .pwm_reg_ch(), .pwm_reg_we(), .pwm_reg_wdata(),
-    .pwm_fault(1'b0), .pwm_out(16'h0),
-    .enc_reg_ch(), .enc_reg_req(),
-    .enc_reg_rdata(32'h0), .enc_direction(16'h0),
-    .enc_idx_flag(16'h0), .enc_error_flag(16'h0),
-    .enc_clear_pos(), .enc_clear_idx(),
-    .pid_target_flat(), .pid_kp_flat(), .pid_ki_flat(),
-    .pid_kd_flat(), .pid_out_max_flat(), .pid_enable(),
-    .pid_out_flat(128'h0), .pid_at_target(8'h0), .pid_saturated(8'h0),
-    .fault_reg(32'h0), .fault_clear(),
-    .safe_state(1'b0), .estop_active(1'b0),
-    .wd_pet(), .wd_enable(),
-    .can_tx_id(), .can_tx_ide(), .can_tx_rtr(),
-    .can_tx_brs(), .can_tx_fdf(), .can_tx_dlc(),
-    .can_tx_data(), .can_tx_valid(),
-    .can_rx_ack(), .can_rx_id(29'h0),
-    .can_rx_ide(1'b0), .can_rx_brs(1'b0), .can_rx_fdf(1'b0),
-    .can_rx_dlc(4'h0), .can_rx_data(512'h0), .can_rx_valid(1'b0),
-    .can_bus_off(1'b0), .can_err_passive(1'b0),
-    .can_tx_err_cnt(8'h0), .can_rx_err_cnt(8'h0),
-    .ec_pd_addr(), .ec_pd_wdata(), .ec_pd_we(), .ec_pd_re(),
-    .ec_pd_rdata(32'h0), .ec_pd_valid(1'b0),
-    .ec_state(4'h0), .ec_link(1'b0),
-    .ec_operational(1'b0), .ec_wkc(16'h0), .ec_timeout(1'b0),
-    .sys_reset_req()
+module robocore1_axi_formal (
+    input wire         aclk,
+    input wire         aresetn,
+    input wire [31:0]  awaddr,
+    input wire         awvalid,
+    input wire [31:0]  wdata,
+    input wire [3:0]   wstrb,
+    input wire         wvalid,
+    input wire         bready,
+    input wire [31:0]  araddr,
+    input wire         arvalid,
+    input wire         rready,
+    input wire [15:0]  irq_in
 );
 
-// =========================================================================
-// RESET — synchronous constraints only
-// =========================================================================
-initial assume(!rst_n);
-initial assume(awvalid == 0);
-initial assume(wvalid  == 0);
-initial assume(arvalid == 0);
-initial assume(bready  == 0);
-initial assume(rready  == 0);
-initial assume(irq_in  == 0);
+// Access DUT internals via bind scope
+wire        awready    = robocore1_axi.awready;
+wire        wready     = robocore1_axi.wready;
+wire [1:0]  bresp      = robocore1_axi.bresp;
+wire        bvalid     = robocore1_axi.bvalid;
+wire        arready    = robocore1_axi.arready;
+wire [31:0] rdata      = robocore1_axi.rdata;
+wire [1:0]  rresp      = robocore1_axi.rresp;
+wire        rvalid     = robocore1_axi.rvalid;
+wire        irq_out    = robocore1_axi.irq_out;
+wire [1:0]  wr_state   = robocore1_axi.wr_state;
+wire [1:0]  rd_state   = robocore1_axi.rd_state;
+wire [31:0] wr_addr_r  = robocore1_axi.wr_addr_r;
+wire [31:0] rd_addr_r  = robocore1_axi.rd_addr_r;
+wire [31:0] wr_data_r  = robocore1_axi.wr_data_r;
+wire [15:0] irq_mask   = robocore1_axi.irq_mask;
+wire [15:0] irq_active = robocore1_axi.irq_active;
+wire [15:0] irq_pending= robocore1_axi.irq_pending;
+wire [31:0] sys_scratch= robocore1_axi.sys_scratch;
+wire [3:0]  wd_pet     = robocore1_axi.wd_pet;
 
-always @(posedge clk) begin
-    if (!rst_n) begin
-        assume(awvalid == 0);
-        assume(wvalid  == 0);
-        assume(arvalid == 0);
-        assume(bready  == 0);
+localparam WR_IDLE   = 2'd0;
+localparam WR_DECODE = 2'd1;
+localparam WR_RESP   = 2'd2;
+localparam RD_IDLE   = 2'd0;
+localparam RD_RESP   = 2'd2;
+localparam OKAY      = 2'b00;
+localparam SLVERR    = 2'b10;
+
+// =========================================================================
+// MASTER ASSUMPTIONS
+// =========================================================================
+always @(posedge aclk) begin
+    if (!aresetn) begin
+        assume(awvalid == 0); assume(wvalid  == 0);
+        assume(arvalid == 0); assume(bready  == 0);
         assume(rready  == 0);
-        assume(irq_in  == 0);
     end
 end
-
-// =========================================================================
-// MASTER PROTOCOL ASSUMPTIONS
-// =========================================================================
-always @(posedge clk) begin
-    // VALID stable until READY
-    if (rst_n && $past(awvalid) && !$past(awready)) assume(awvalid);
-    if (rst_n && $past(wvalid)  && !$past(wready))  assume(wvalid);
-    if (rst_n && $past(arvalid) && !$past(arready)) assume(arvalid);
-    // AXI4-Lite: AW and W together
-    if (rst_n) assume(awvalid == wvalid);
-    // Address stable until handshake
-    if (rst_n && $past(awvalid) && !$past(awready))
+always @(posedge aclk) begin
+    if (aresetn && $past(awvalid) && !$past(awready)) assume(awvalid);
+    if (aresetn && $past(wvalid)  && !$past(wready))  assume(wvalid);
+    if (aresetn && $past(arvalid) && !$past(arready)) assume(arvalid);
+    if (aresetn) assume(awvalid == wvalid);
+    if (aresetn && $past(awvalid) && !$past(awready))
         assume(awaddr == $past(awaddr));
-    if (rst_n && $past(arvalid) && !$past(arready))
+    if (aresetn && $past(arvalid) && !$past(arready))
         assume(araddr == $past(araddr));
 end
 
 // =========================================================================
-// P1: BRESP only OKAY(00) or SLVERR(10)
+// INDUCTION INVARIANTS — constrain reachable state for unbounded proof
 // =========================================================================
-always @(posedge clk)
-    if (rst_n && bvalid)
-        assert(bresp == 2'b00 || bresp == 2'b10);
+// INV1: bvalid iff wr_state == WR_RESP
+always @(posedge aclk)
+    if (aresetn) assert(bvalid == (wr_state == WR_RESP));
+
+// INV2: rvalid iff rd_state == RD_RESP
+always @(posedge aclk)
+    if (aresetn) assert(rvalid == (rd_state == RD_RESP));
+
+// INV3: awready iff wr_state == WR_IDLE
+always @(posedge aclk)
+    if (aresetn) assert(awready == (wr_state == WR_IDLE));
+
+// INV4: arready iff rd_state == RD_IDLE
+always @(posedge aclk)
+    if (aresetn) assert(arready == (rd_state == RD_IDLE));
+
+// INV5: awready == wready always
+always @(posedge aclk)
+    if (aresetn) assert(awready == wready);
+
+// INV6: irq_active exactly equals masked pending+in
+always @(posedge aclk)
+    if (aresetn)
+        assert(irq_active == ((irq_pending | irq_in) & ~irq_mask));
 
 // =========================================================================
-// P2: RRESP only OKAY(00) or SLVERR(10)
+// P1: BRESP only OKAY/SLVERR
 // =========================================================================
-always @(posedge clk)
-    if (rst_n && rvalid)
-        assert(rresp == 2'b00 || rresp == 2'b10);
+always @(posedge aclk)
+    if (aresetn && bvalid)
+        assert(bresp == OKAY || bresp == SLVERR);
 
 // =========================================================================
-// P3: BVALID sticky until BREADY (ARM spec §A3.2.2)
+// P2: RRESP only OKAY/SLVERR
 // =========================================================================
-always @(posedge clk)
-    if (rst_n && $past(rst_n) && $past(bvalid) && !$past(bready))
+always @(posedge aclk)
+    if (aresetn && rvalid)
+        assert(rresp == OKAY || rresp == SLVERR);
+
+// =========================================================================
+// P3: BVALID sticky until BREADY
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && $past(aresetn) && $past(bvalid) && !$past(bready))
         assert(bvalid);
 
 // =========================================================================
-// P4: RVALID sticky until RREADY (ARM spec §A3.2.2)
+// P4: RVALID sticky until RREADY
 // =========================================================================
-always @(posedge clk)
-    if (rst_n && $past(rst_n) && $past(rvalid) && !$past(rready))
+always @(posedge aclk)
+    if (aresetn && $past(aresetn) && $past(rvalid) && !$past(rready))
         assert(rvalid);
 
 // =========================================================================
-// P5: AWREADY == WREADY always (AXI4-Lite single channel constraint)
+// P5: AWREADY == WREADY always
 // =========================================================================
-always @(posedge clk)
-    if (rst_n && $past(rst_n))
-        assert(awready == wready);
+always @(posedge aclk)
+    if (aresetn) assert(awready == wready);
 
 // =========================================================================
-// P6: No new AW handshake while BVALID is pending
+// P6: No new AW handshake while BVALID pending
 // =========================================================================
-always @(posedge clk)
-    if (rst_n && bvalid)
+always @(posedge aclk)
+    if (aresetn && bvalid)
         assert(!(awvalid && awready));
 
 // =========================================================================
-// P7a: IRQ output is purely combinatorial from irq_active
-//      irq_out cannot be high when all irq_in are low AND
-//      irq_out was low last cycle (no sticky pending from before)
-//      Provable form: once irq_out deasserts, it stays low until irq_in
-// P7b: IRQ cannot assert spontaneously on same cycle as reset deasserts
+// P7: BVALID only in WR_RESP
 // =========================================================================
-// irq_pending is sticky so we track irq_in ever being high via a latch
-reg irq_ever_high;
-always @(posedge clk) begin
-    if (!rst_n)       irq_ever_high <= 0;
-    else if (|irq_in) irq_ever_high <= 1;
+always @(posedge aclk)
+    if (aresetn && bvalid)
+        assert(wr_state == WR_RESP);
+
+// =========================================================================
+// P8: RVALID only in RD_RESP
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && rvalid)
+        assert(rd_state == RD_RESP);
+
+// =========================================================================
+// P9: wr_state in {0,1,2}
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn) assert(wr_state <= 2'd2);
+
+// =========================================================================
+// P10: rd_state in {0,1,2}
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn) assert(rd_state <= 2'd2);
+
+// =========================================================================
+// P11: CHIP_ID always correct
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && rvalid &&
+        rd_addr_r[19:16] == 4'h7 &&
+        rd_addr_r[15:0]  == 16'h0000)
+        assert(rdata == 32'hAC010002);
+
+// =========================================================================
+// P12: SLVERR on unmapped read
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && rvalid && rd_addr_r[19:16] > 4'h7)
+        assert(rresp == SLVERR);
+
+// =========================================================================
+// P13: SLVERR on unmapped write
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && bvalid && wr_addr_r[19:16] > 4'h7)
+        assert(bresp == SLVERR);
+
+// =========================================================================
+// P14: Scratch register round-trip
+// =========================================================================
+reg [31:0] scratch_written;
+reg        scratch_valid;
+always @(posedge aclk) begin
+    if (!aresetn) begin
+        scratch_written <= 0; scratch_valid <= 0;
+    end else if (wr_state == WR_DECODE &&
+                 wr_addr_r[19:16] == 4'h7 &&
+                 wr_addr_r[15:0]  == 16'h0008) begin
+        scratch_written <= wr_data_r; scratch_valid <= 1;
+    end
 end
+always @(posedge aclk)
+    if (aresetn && scratch_valid)
+        assert(sys_scratch == scratch_written);
 
-// If irq_out just rose (was 0, now 1), irq_in must be active now or
-// irq_ever_high must be set (pending from before)
-always @(posedge clk)
-    if (rst_n && $past(rst_n) && irq_out && !$past(irq_out))
-        assert(|irq_in || irq_ever_high);
+// =========================================================================
+// P15: wd_pet is a pulse — zero outside WR_DECODE
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && $past(aresetn) && wr_state != WR_DECODE)
+        assert(wd_pet == 0);
 
-// IRQ cannot be asserted on the very first cycle after reset
-always @(posedge clk)
-    if (rst_n && !$past(rst_n))
+// =========================================================================
+// P16: irq_active & irq_mask == 0 always
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn) assert((irq_active & irq_mask) == 0);
+
+// =========================================================================
+// P17: irq_out == OR(irq_active)
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn) assert(irq_out == |irq_active);
+
+// =========================================================================
+// P18: irq_out low on first cycle after reset
+// =========================================================================
+always @(posedge aclk)
+    if (aresetn && !$past(aresetn))
         assert(!irq_out);
 
 // =========================================================================
 // COVER GOALS
 // =========================================================================
-always @(posedge clk) cover(rst_n && bvalid && bready && bresp==2'b00);
-always @(posedge clk) cover(rst_n && rvalid && rready && rresp==2'b00);
-always @(posedge clk) cover(rst_n && bvalid && bready && bresp==2'b10);
-always @(posedge clk) cover(rst_n && rvalid && rready && rresp==2'b10);
-always @(posedge clk) cover(rst_n && irq_out);
-always @(posedge clk) cover(rst_n && awready && awvalid);
-always @(posedge clk) cover(rst_n && arready && arvalid);
+always @(posedge aclk) cover(aresetn && bvalid && bready && bresp==OKAY);
+always @(posedge aclk) cover(aresetn && rvalid && rready && rresp==OKAY);
+always @(posedge aclk) cover(aresetn && bvalid && bready && bresp==SLVERR);
+always @(posedge aclk) cover(aresetn && rvalid && rready && rresp==SLVERR);
+always @(posedge aclk) cover(aresetn && irq_out);
+always @(posedge aclk) cover(aresetn && irq_out && $past(!irq_out));
+always @(posedge aclk) cover(aresetn && rvalid && rdata==32'hAC010002);
+always @(posedge aclk) cover(aresetn && wr_addr_r[19:16]==4'h5 && bvalid);
+always @(posedge aclk) cover(aresetn && wr_addr_r[19:16]==4'h6 && bvalid);
+always @(posedge aclk) cover(aresetn && rd_addr_r[19:16]==4'h3 && rvalid);
+always @(posedge aclk) cover(aresetn && scratch_valid);
 
 endmodule
+
+// bind — attach to DUT without touching RTL
+bind robocore1_axi robocore1_axi_formal formal_inst (
+    .aclk(aclk), .aresetn(aresetn),
+    .awaddr(awaddr), .awvalid(awvalid),
+    .wdata(wdata), .wstrb(wstrb), .wvalid(wvalid),
+    .bready(bready), .araddr(araddr), .arvalid(arvalid),
+    .rready(rready), .irq_in(irq_in)
+);
 `default_nettype wire

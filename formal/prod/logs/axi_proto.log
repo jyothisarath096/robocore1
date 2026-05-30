@@ -1,342 +1,128 @@
-SBY  7:35:20 [formal/prod/axi_proto] Removing directory '/workspace/robocore1/formal/prod/axi_proto'.
-SBY  7:35:20 [formal/prod/axi_proto] Copy '/workspace/robocore1/formal/prod/axi_proto_formal.v' to '/workspace/robocore1/formal/prod/axi_proto/src/axi_proto_formal.v'.
-SBY  7:35:20 [formal/prod/axi_proto] Copy '/workspace/robocore1/src/robocore1_axi.v' to '/workspace/robocore1/formal/prod/axi_proto/src/robocore1_axi.v'.
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: smtbmc --stdt z3
-SBY  7:35:20 [formal/prod/axi_proto] base: starting process "cd formal/prod/axi_proto/src; yosys -ql ../model/design.log ../model/design.ys"
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wstrb [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wstrb [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wstrb [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wstrb [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [31] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [30] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [29] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [28] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [27] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [26] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [25] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [24] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [23] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [22] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [21] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [20] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [19] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [18] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [17] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [16] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wdata [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [31] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [30] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [29] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [28] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [27] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [26] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [25] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [24] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [23] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [22] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [21] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [20] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [19] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [18] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [17] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [16] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\araddr [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [31] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [30] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [29] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [28] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [27] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [26] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [25] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [24] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [23] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [22] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [21] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [20] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [19] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [18] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [17] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [16] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awaddr [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\irq_in [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\rready is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\bready is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\arvalid is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\wvalid is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: Warning: Wire axi_proto_formal.\awvalid is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] base: finished (returncode=0)
-SBY  7:35:20 [formal/prod/axi_proto] prep: starting process "cd formal/prod/axi_proto/model; yosys -ql design_prep.log design_prep.ys"
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wstrb [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wstrb [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wstrb [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wstrb [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [31] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [30] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [29] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [28] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [27] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [26] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [25] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [24] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [23] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [22] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [21] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [20] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [19] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [18] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [17] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [16] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wdata [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [31] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [30] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [29] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [28] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [27] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [26] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [25] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [24] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [23] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [22] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [21] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [20] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [19] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [18] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [17] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [16] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\araddr [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [31] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [30] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [29] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [28] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [27] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [26] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [25] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [24] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [23] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [22] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [21] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [20] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [19] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [18] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [17] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [16] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awaddr [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [15] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [14] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [13] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [12] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [11] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [10] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [9] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [8] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [7] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [6] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [5] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [4] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [3] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [2] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [1] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\irq_in [0] is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\rready is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\bready is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\arvalid is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\wvalid is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: Warning: Wire axi_proto_formal.\awvalid is used but has no driver.
-SBY  7:35:20 [formal/prod/axi_proto] prep: finished (returncode=0)
-SBY  7:35:20 [formal/prod/axi_proto] smt2_stdt: starting process "cd formal/prod/axi_proto/model; yosys -ql design_smt2_stdt.log design_smt2_stdt.ys"
-SBY  7:35:20 [formal/prod/axi_proto] smt2_stdt: finished (returncode=0)
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: starting process "cd formal/prod/axi_proto; yosys-smtbmc -s z3 --presat --noprogress -t 40  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2_stdt.smt2"
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Solver: z3
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 0..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 0..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 1..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 1..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 2..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 2..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 3..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 3..
-SBY  7:35:20 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 4..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 4..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 5..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 5..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 6..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assertions in step 6..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:00  Checking assumptions in step 7..
-SBY  7:35:21 [formal/prod/axi_proto] engine_0: ##   0:00:01  Checking assertions in step 7..
-SBY  7:35:22 [formal/prod/axi_proto] engine_0: ##   0:00:01  Checking assumptions in step 8..
-SBY  7:35:22 [formal/prod/axi_proto] engine_0: ##   0:00:01  Checking assertions in step 8..
-SBY  7:35:22 [formal/prod/axi_proto] engine_0: ##   0:00:01  Checking assumptions in step 9..
-SBY  7:35:22 [formal/prod/axi_proto] engine_0: ##   0:00:02  Checking assertions in step 9..
-SBY  7:35:23 [formal/prod/axi_proto] engine_0: ##   0:00:02  Checking assumptions in step 10..
-SBY  7:35:24 [formal/prod/axi_proto] engine_0: ##   0:00:03  Checking assertions in step 10..
-SBY  7:35:26 [formal/prod/axi_proto] engine_0: ##   0:00:05  Checking assumptions in step 11..
-SBY  7:35:27 [formal/prod/axi_proto] engine_0: ##   0:00:06  Checking assertions in step 11..
-SBY  7:35:28 [formal/prod/axi_proto] engine_0: ##   0:00:07  Checking assumptions in step 12..
-SBY  7:35:29 [formal/prod/axi_proto] engine_0: ##   0:00:08  Checking assertions in step 12..
-SBY  7:35:30 [formal/prod/axi_proto] engine_0: ##   0:00:09  Checking assumptions in step 13..
-SBY  7:35:30 [formal/prod/axi_proto] engine_0: ##   0:00:09  Checking assertions in step 13..
-SBY  7:35:31 [formal/prod/axi_proto] engine_0: ##   0:00:10  Checking assumptions in step 14..
-SBY  7:35:31 [formal/prod/axi_proto] engine_0: ##   0:00:10  Checking assertions in step 14..
-SBY  7:35:32 [formal/prod/axi_proto] engine_0: ##   0:00:11  Checking assumptions in step 15..
-SBY  7:35:32 [formal/prod/axi_proto] engine_0: ##   0:00:11  Checking assertions in step 15..
-SBY  7:35:34 [formal/prod/axi_proto] engine_0: ##   0:00:13  Checking assumptions in step 16..
-SBY  7:35:34 [formal/prod/axi_proto] engine_0: ##   0:00:13  Checking assertions in step 16..
-SBY  7:35:35 [formal/prod/axi_proto] engine_0: ##   0:00:15  Checking assumptions in step 17..
-SBY  7:35:37 [formal/prod/axi_proto] engine_0: ##   0:00:17  Checking assertions in step 17..
-SBY  7:35:40 [formal/prod/axi_proto] engine_0: ##   0:00:19  Checking assumptions in step 18..
-SBY  7:35:43 [formal/prod/axi_proto] engine_0: ##   0:00:22  Checking assertions in step 18..
-SBY  7:35:47 [formal/prod/axi_proto] engine_0: ##   0:00:26  Checking assumptions in step 19..
-SBY  7:35:48 [formal/prod/axi_proto] engine_0: ##   0:00:27  Checking assertions in step 19..
-SBY  7:35:52 [formal/prod/axi_proto] engine_0: ##   0:00:31  Checking assumptions in step 20..
-SBY  7:35:53 [formal/prod/axi_proto] engine_0: ##   0:00:32  Checking assertions in step 20..
-SBY  7:35:55 [formal/prod/axi_proto] engine_0: ##   0:00:34  Checking assumptions in step 21..
-SBY  7:35:56 [formal/prod/axi_proto] engine_0: ##   0:00:35  Checking assertions in step 21..
-SBY  7:36:00 [formal/prod/axi_proto] engine_0: ##   0:00:39  Checking assumptions in step 22..
-SBY  7:36:00 [formal/prod/axi_proto] engine_0: ##   0:00:39  Checking assertions in step 22..
-SBY  7:36:04 [formal/prod/axi_proto] engine_0: ##   0:00:43  Checking assumptions in step 23..
-SBY  7:36:07 [formal/prod/axi_proto] engine_0: ##   0:00:46  Checking assertions in step 23..
-SBY  7:36:11 [formal/prod/axi_proto] engine_0: ##   0:00:50  Checking assumptions in step 24..
-SBY  7:36:14 [formal/prod/axi_proto] engine_0: ##   0:00:53  Checking assertions in step 24..
-SBY  7:36:19 [formal/prod/axi_proto] engine_0: ##   0:00:58  Checking assumptions in step 25..
-SBY  7:36:22 [formal/prod/axi_proto] engine_0: ##   0:01:01  Checking assertions in step 25..
-SBY  7:36:28 [formal/prod/axi_proto] engine_0: ##   0:01:07  Checking assumptions in step 26..
-SBY  7:36:34 [formal/prod/axi_proto] engine_0: ##   0:01:13  Checking assertions in step 26..
-SBY  7:36:40 [formal/prod/axi_proto] engine_0: ##   0:01:19  Checking assumptions in step 27..
-SBY  7:36:41 [formal/prod/axi_proto] engine_0: ##   0:01:20  Checking assertions in step 27..
-SBY  7:36:47 [formal/prod/axi_proto] engine_0: ##   0:01:26  Checking assumptions in step 28..
-SBY  7:36:48 [formal/prod/axi_proto] engine_0: ##   0:01:27  Checking assertions in step 28..
-SBY  7:36:54 [formal/prod/axi_proto] engine_0: ##   0:01:33  Checking assumptions in step 29..
-SBY  7:36:58 [formal/prod/axi_proto] engine_0: ##   0:01:37  Checking assertions in step 29..
-SBY  7:37:06 [formal/prod/axi_proto] engine_0: ##   0:01:46  Checking assumptions in step 30..
-SBY  7:37:08 [formal/prod/axi_proto] engine_0: ##   0:01:47  Checking assertions in step 30..
-SBY  7:37:13 [formal/prod/axi_proto] engine_0: ##   0:01:53  Checking assumptions in step 31..
-SBY  7:37:16 [formal/prod/axi_proto] engine_0: ##   0:01:55  Checking assertions in step 31..
-SBY  7:37:27 [formal/prod/axi_proto] engine_0: ##   0:02:06  Checking assumptions in step 32..
-SBY  7:37:30 [formal/prod/axi_proto] engine_0: ##   0:02:09  Checking assertions in step 32..
-SBY  7:37:43 [formal/prod/axi_proto] engine_0: ##   0:02:22  Checking assumptions in step 33..
-SBY  7:37:51 [formal/prod/axi_proto] engine_0: ##   0:02:30  Checking assertions in step 33..
-SBY  7:38:00 [formal/prod/axi_proto] engine_0: ##   0:02:39  Checking assumptions in step 34..
-SBY  7:38:02 [formal/prod/axi_proto] engine_0: ##   0:02:41  Checking assertions in step 34..
-SBY  7:38:12 [formal/prod/axi_proto] engine_0: ##   0:02:51  Checking assumptions in step 35..
-SBY  7:38:14 [formal/prod/axi_proto] engine_0: ##   0:02:53  Checking assertions in step 35..
-SBY  7:38:24 [formal/prod/axi_proto] engine_0: ##   0:03:03  Checking assumptions in step 36..
-SBY  7:38:26 [formal/prod/axi_proto] engine_0: ##   0:03:05  Checking assertions in step 36..
-SBY  7:38:33 [formal/prod/axi_proto] engine_0: ##   0:03:12  Checking assumptions in step 37..
-SBY  7:38:48 [formal/prod/axi_proto] engine_0: ##   0:03:27  Checking assertions in step 37..
-SBY  7:39:02 [formal/prod/axi_proto] engine_0: ##   0:03:41  Checking assumptions in step 38..
-SBY  7:39:10 [formal/prod/axi_proto] engine_0: ##   0:03:49  Checking assertions in step 38..
-SBY  7:39:32 [formal/prod/axi_proto] engine_0: ##   0:04:11  Checking assumptions in step 39..
-SBY  7:39:37 [formal/prod/axi_proto] engine_0: ##   0:04:17  Checking assertions in step 39..
-SBY  7:40:06 [formal/prod/axi_proto] engine_0: ##   0:04:45  Status: passed
-SBY  7:40:06 [formal/prod/axi_proto] engine_0: finished (returncode=0)
-SBY  7:40:06 [formal/prod/axi_proto] engine_0: Status returned by engine: pass
-SBY  7:40:06 [formal/prod/axi_proto] summary: Elapsed clock time [H:MM:SS (secs)]: 0:04:46 (286)
-SBY  7:40:06 [formal/prod/axi_proto] summary: Elapsed process time [H:MM:SS (secs)]: 0:04:46 (286)
-SBY  7:40:06 [formal/prod/axi_proto] summary: engine_0 (smtbmc --stdt z3) returned pass
-SBY  7:40:06 [formal/prod/axi_proto] summary: engine_0 did not produce any traces
-SBY  7:40:06 [formal/prod/axi_proto] DONE (PASS, rc=0)
+SBY  7:51:23 [formal/prod/axi_proto] Removing directory '/workspace/robocore1/formal/prod/axi_proto'.
+SBY  7:51:23 [formal/prod/axi_proto] Copy '/workspace/robocore1/formal/prod/axi_proto_formal.v' to '/workspace/robocore1/formal/prod/axi_proto/src/axi_proto_formal.v'.
+SBY  7:51:23 [formal/prod/axi_proto] Copy '/workspace/robocore1/src/robocore1_axi.v' to '/workspace/robocore1/formal/prod/axi_proto/src/robocore1_axi.v'.
+SBY  7:51:23 [formal/prod/axi_proto] engine_0: smtbmc --stdt z3
+SBY  7:51:23 [formal/prod/axi_proto] base: starting process "cd formal/prod/axi_proto/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:23: Warning: Identifier `\robocore1_axi.awready' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:24: Warning: Identifier `\robocore1_axi.wready' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:25: Warning: Identifier `\robocore1_axi.bresp' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:26: Warning: Identifier `\robocore1_axi.bvalid' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:27: Warning: Identifier `\robocore1_axi.arready' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:28: Warning: Identifier `\robocore1_axi.rdata' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:29: Warning: Identifier `\robocore1_axi.rresp' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:30: Warning: Identifier `\robocore1_axi.rvalid' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:31: Warning: Identifier `\robocore1_axi.irq_out' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:32: Warning: Identifier `\robocore1_axi.wr_state' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:33: Warning: Identifier `\robocore1_axi.rd_state' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:34: Warning: Identifier `\robocore1_axi.wr_addr_r' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:35: Warning: Identifier `\robocore1_axi.rd_addr_r' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:36: Warning: Identifier `\robocore1_axi.wr_data_r' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:37: Warning: Identifier `\robocore1_axi.irq_mask' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:38: Warning: Identifier `\robocore1_axi.irq_active' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:39: Warning: Identifier `\robocore1_axi.irq_pending' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:40: Warning: Identifier `\robocore1_axi.sys_scratch' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: /workspace/robocore1/formal/prod/axi_proto_formal.v:41: Warning: Identifier `\robocore1_axi.wd_pet' is implicitly declared.
+SBY  7:51:23 [formal/prod/axi_proto] base: finished (returncode=0)
+SBY  7:51:23 [formal/prod/axi_proto] prep: starting process "cd formal/prod/axi_proto/model; yosys -ql design_prep.log design_prep.ys"
+SBY  7:51:23 [formal/prod/axi_proto] prep: finished (returncode=0)
+SBY  7:51:23 [formal/prod/axi_proto] smt2_stdt: starting process "cd formal/prod/axi_proto/model; yosys -ql design_smt2_stdt.log design_smt2_stdt.ys"
+SBY  7:51:23 [formal/prod/axi_proto] smt2_stdt: finished (returncode=0)
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: starting process "cd formal/prod/axi_proto; yosys-smtbmc -s z3 --presat --noprogress -t 40  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2_stdt.smt2"
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: starting process "cd formal/prod/axi_proto; yosys-smtbmc -s z3 --presat -i --noprogress -t 40  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2_stdt.smt2"
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: ##   0:00:00  Solver: z3
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: ##   0:00:00  Trying induction in step 40..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: ##   0:00:00  Status: passed
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: finished (returncode=0)
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.induction: Status returned by engine for induction: pass
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 3..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 4..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 5..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 6..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 6..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 7..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 7..
+SBY  7:51:23 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 8..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 8..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 9..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 9..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 10..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 10..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 11..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 11..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 12..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 12..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 13..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 13..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 14..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assertions in step 14..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:00  Checking assumptions in step 15..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:01  Checking assertions in step 15..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:01  Checking assumptions in step 16..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:01  Checking assertions in step 16..
+SBY  7:51:24 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:01  Checking assumptions in step 17..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assertions in step 17..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assumptions in step 18..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assertions in step 18..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assumptions in step 19..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assertions in step 19..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assumptions in step 20..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assertions in step 20..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:03  Checking assumptions in step 21..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assertions in step 21..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assumptions in step 22..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assertions in step 22..
+SBY  7:51:27 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assumptions in step 23..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assertions in step 23..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assumptions in step 24..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assertions in step 24..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assumptions in step 25..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assertions in step 25..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:04  Checking assumptions in step 26..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assertions in step 26..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assumptions in step 27..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assertions in step 27..
+SBY  7:51:28 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assumptions in step 28..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assertions in step 28..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assumptions in step 29..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assertions in step 29..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:05  Checking assumptions in step 30..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assertions in step 30..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assumptions in step 31..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assertions in step 31..
+SBY  7:51:29 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assumptions in step 32..
+SBY  7:51:30 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assertions in step 32..
+SBY  7:51:30 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assumptions in step 33..
+SBY  7:51:30 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assertions in step 33..
+SBY  7:51:30 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:06  Checking assumptions in step 34..
+SBY  7:51:30 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:07  Checking assertions in step 34..
+SBY  7:51:30 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:07  Checking assumptions in step 35..
+SBY  7:51:31 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:07  Checking assertions in step 35..
+SBY  7:51:31 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:07  Checking assumptions in step 36..
+SBY  7:51:31 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:07  Checking assertions in step 36..
+SBY  7:51:31 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:08  Checking assumptions in step 37..
+SBY  7:51:31 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:08  Checking assertions in step 37..
+SBY  7:51:31 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:08  Checking assumptions in step 38..
+SBY  7:51:32 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:08  Checking assertions in step 38..
+SBY  7:51:32 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:08  Checking assumptions in step 39..
+SBY  7:51:32 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:08  Checking assertions in step 39..
+SBY  7:51:32 [formal/prod/axi_proto] engine_0.basecase: ##   0:00:09  Status: passed
+SBY  7:51:32 [formal/prod/axi_proto] engine_0.basecase: finished (returncode=0)
+SBY  7:51:32 [formal/prod/axi_proto] engine_0.basecase: Status returned by engine for basecase: pass
+SBY  7:51:32 [formal/prod/axi_proto] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:09 (9)
+SBY  7:51:32 [formal/prod/axi_proto] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:09 (9)
+SBY  7:51:32 [formal/prod/axi_proto] summary: engine_0 (smtbmc --stdt z3) returned pass for basecase
+SBY  7:51:32 [formal/prod/axi_proto] summary: engine_0 (smtbmc --stdt z3) returned pass for induction
+SBY  7:51:32 [formal/prod/axi_proto] summary: engine_0 did not produce any traces
+SBY  7:51:32 [formal/prod/axi_proto] summary: successful proof by k-induction.
+SBY  7:51:32 [formal/prod/axi_proto] DONE (PASS, rc=0)
