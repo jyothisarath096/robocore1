@@ -1,0 +1,15 @@
+[options]
+mode bmc
+depth 50
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -formal /workspace/formal/prod/dma_formal.v
+read_verilog /workspace/src/robocore1_dma.v
+prep -top dma_formal
+
+[files]
+/workspace/formal/prod/dma_formal.v
+/workspace/src/robocore1_dma.v

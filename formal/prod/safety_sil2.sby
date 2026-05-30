@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 40
+
+[engines]
+smtbmc --statedt z3
+
+[script]
+read_verilog -formal /workspace/formal/prod/safety_sil2_formal.v
+read_verilog /workspace/src/safety_subsystem.v
+prep -top safety_sil2_formal
+
+[files]
+/workspace/formal/prod/safety_sil2_formal.v
+/workspace/src/safety_subsystem.v
